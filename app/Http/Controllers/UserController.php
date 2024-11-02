@@ -18,7 +18,7 @@ class UserController extends Controller
     $credentials = $request->only('email', 'password');
 
     if (Auth::attempt($credentials)) {
-        return redirect()->route('index');
+        return redirect()->route('index.index');
     } else {
         return redirect()->route('entry.login');
     }

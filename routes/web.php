@@ -18,7 +18,7 @@ Route::get('/register/page', function () {
 
 Route::post('/register', [UserController::class, 'register'])->name('register');
 
-Route::get('/index', function () {
+Route::get('/index/page', function () {
 
     if (auth()->check()) {
         $user = auth()->user();
@@ -27,4 +27,16 @@ Route::get('/index', function () {
         return redirect()->route('entry.login');
     }
 
-})->name('index');
+})->name('index.index');
+
+Route::get('/customers/page', function () {
+    return view('customer.customers');
+})->name('customer.customers');
+
+Route::get('/log/page', function () {
+    return view('log.logs');
+})->name('log.logs');
+
+Route::get('/helpdesk/page', function () {
+    return view('helpdesk.helpdesk');
+})->name('helpdesk.helpdesk');
