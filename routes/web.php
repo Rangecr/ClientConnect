@@ -6,6 +6,11 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\TicketController;
 
+use App\Models\User;
+use App\Models\Customer;
+use App\Models\Log;
+use App\Models\Ticket;
+
 Route::get('/', function () {
     return view('entry.login');
 })->name('entry.login');
@@ -30,7 +35,10 @@ Route::get('/index/page', function () {
 })->name('index.index');
 
 Route::get('/customers/page', function () {
-    return view('customer.customers');
+
+    $customers = Customer::all();
+
+    return view('customer.customers', ['customers' => $customers]);
 })->name('customer.customers');
 
 Route::post('/customer/add', [CustomerController::class, 'customer_add'])->name('customer.add');

@@ -107,10 +107,11 @@
                 </nav>
                 @if (session()->has('alert'))
                     @if (session('alert') === 'success')
-                    <div class="alert alert-success alert-dismissible" role="alert"><button class="btn-close"
-                            type="button" aria-label="Close" data-bs-dismiss="alert"></button><span><strong>Customer
-                                added successfully!</strong></span></div>
-                @endif
+                        <div class="alert alert-success alert-dismissible" role="alert"><button class="btn-close"
+                                type="button" aria-label="Close"
+                                data-bs-dismiss="alert"></button><span><strong>Customer
+                                    added successfully!</strong></span></div>
+                    @endif
                 @endif
                 <div class="alert alert-success alert-dismissible" role="alert"
                     style="color: var(--bs-danger-text-emphasis);border-color: var(--bs-danger-border-subtle);background: var(--bs-danger-bg-subtle);">
@@ -270,108 +271,27 @@
                                     <thead>
                                         <tr>
                                             <th></th>
-                                            <th>ID</th>
                                             <th>Name</th>
                                             <th>Email</th>
-                                            <th>Created At</th>
                                             <th>Phone Number</th>
+                                            <th>Created At</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($customers as $customer)
                                         <tr>
                                             <td style="text-align: center;"><input type="checkbox"></td>
-                                            <td>Cell 1</td>
-                                            <td>Airi Satou</td>
-                                            <td>Accountant</td>
-                                            <td>2008/11/28</td>
-                                            <td>$162,700</td>
+                                            <td>{{ $customer->name }}</td>
+                                            <td>{{ $customer->email }}</td>
+                                            <td>{{ $customer->p_numb }}</td>
+                                            <td>{{ $customer->created_at }}</td>
                                             <td style="font-style: italic;text-decoration:  underline;"><button
-                                                    class="btn btn-primary btn-view-cust" type="button"
+                                                    class="btn btn-primary btn-view-cust" type="submit"
                                                     style="background: rgba(78,115,223,0);color: rgb(0,0,0);border-width: 0px;font-style: italic;">View
                                                     Details</button></td>
                                         </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>Cell 1</td>
-                                            <td>Angelica Ramos</td>
-                                            <td>Chief Executive Officer(CEO)</td>
-                                            <td>2009/10/09<br></td>
-                                            <td>$1,200,000</td>
-                                            <td style="font-style: italic;text-decoration:  underline;">Cell 7</td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>Cell 1</td>
-                                            <td>Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-                                            <td>2009/01/12<br></td>
-                                            <td>$86,000</td>
-                                            <td style="font-style: italic;text-decoration:  underline;">Cell 7</td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>Cell 1</td>
-                                            <td>Bradley Greer</td>
-                                            <td>Software Engineer</td>
-                                            <td>2012/10/13<br></td>
-                                            <td>$132,000</td>
-                                            <td style="font-style: italic;text-decoration:  underline;">Cell 7</td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>Cell 1</td>
-                                            <td>Brenden Wagner</td>
-                                            <td>Software Engineer</td>
-                                            <td>2011/06/07<br></td>
-                                            <td>$206,850</td>
-                                            <td style="font-style: italic;text-decoration:  underline;">Cell 7</td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>Cell 1</td>
-                                            <td>Brielle Williamson</td>
-                                            <td>Integration Specialist</td>
-                                            <td>2012/12/02<br></td>
-                                            <td>$372,000</td>
-                                            <td style="font-style: italic;text-decoration:  underline;">Cell 7</td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>Cell 1</td>
-                                            <td>Bruno Nash<br></td>
-                                            <td>Software Engineer</td>
-                                            <td>2011/05/03<br></td>
-                                            <td>$163,500</td>
-                                            <td style="font-style: italic;text-decoration:  underline;">Cell 7</td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>Cell 1</td>
-                                            <td>Caesar Vance</td>
-                                            <td>Pre-Sales Support</td>
-                                            <td>2011/12/12<br></td>
-                                            <td>$106,450</td>
-                                            <td style="font-style: italic;text-decoration:  underline;">Cell 7</td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>Cell 1</td>
-                                            <td>Cara Stevens</td>
-                                            <td>Sales Assistant</td>
-                                            <td>2011/12/06<br></td>
-                                            <td>$145,600</td>
-                                            <td style="font-style: italic;text-decoration:  underline;">Cell 7</td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>Cell 1</td>
-                                            <td>Cedric Kelly</td>
-                                            <td>Senior JavaScript Developer</td>
-                                            <td>2012/03/29<br></td>
-                                            <td>$433,060</td>
-                                            <td style="font-style: italic;text-decoration:  underline;">Cell 7</td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                     <tfoot>
                                         <tr></tr>
