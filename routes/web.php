@@ -58,13 +58,21 @@ Route::get('/log/page', function () {
 
         $user = auth()->user();
 
+        $customers = Customer::all();
+
         $logs = Log::all();
 
-        return view('log.logs', ['logs' => $logs, 'user' => $user]);
+        return view('log.logs', [
+            'logs' => $logs, 
+            'user' => $user,
+            'customers' => $customers
+        ]);
     } else {
         return redirect()->route('entry.login');
     }
 })->name('log.logs');
+
+Route::post('/log/add' , [LogController::class, 'log_add'])->name('log.add');
 
 Route::get('/helpdesk/page', function () {
 
