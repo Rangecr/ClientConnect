@@ -271,6 +271,7 @@
                     <div class="card shadow">
                         <div class="card-header py-3">
                             <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0)!important;">Tickets Info</p>
+                            <p style="margin-bottom: 0px;">Filtered by: Something</p>
                         </div>
                         <div class="card-body">
                             <div class="row">
