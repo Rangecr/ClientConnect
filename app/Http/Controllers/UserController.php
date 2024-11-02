@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
    public function login(Request $request) {
-    
-    $credentials = $request->only('name', 'password');
+
+    $credentials = $request->only('email', 'password');
 
     if (Auth::attempt($credentials)) {
         return 'hello';

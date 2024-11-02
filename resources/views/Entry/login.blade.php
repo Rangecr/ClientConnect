@@ -25,9 +25,9 @@
                                     <div class="text-center">
                                         <h4 class="text-dark mb-4">Welcome Back!</h4>
                                     </div>
-                                    <form class="user">
-                                        <div class="mb-3"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email" required=""></div>
-                                        <div class="mb-3"><input class="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="password" minlength="8" maxlength="12" required=""></div><button class="btn btn-primary d-block btn-user w-100" type="submit">Login</button>
+                                    <form action="/login" class="user">
+                                        <div class="mb-3"><input class="form-control form-control-user" type="email" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email" required=""></div>
+                                        <div class="mb-3"><input class="form-control form-control-user" type="password" placeholder="Password" name="password" minlength="8" maxlength="12" required=""></div><button class="btn btn-primary d-block btn-user w-100" type="submit">Login</button>
                                         <hr>
                                     </form>
                                     <div class="text-center"><a class="small" href="reset_pass_1.html">Forgot Password?</a></div>

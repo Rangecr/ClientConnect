@@ -26,6 +26,17 @@ class User extends Authenticatable
         'role',
     ];
 
+    const ROLE_ADMIN = 'admin';
+    const ROLE_SUPPORT = 'support';
+
+    public function isAdmin() {
+        return $this->role === self::ROLE_ADMIN;
+    }
+
+    public function isSupport() {
+        return $this->role === self::ROLE_SUPPORT;
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
