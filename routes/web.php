@@ -26,7 +26,9 @@ Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::get('/index/page', function () {
 
     if (auth()->check()) {
+
         $user = auth()->user();
+
         return view('index.index', ['user' => $user]);
     } else {
         return redirect()->route('entry.login');
@@ -36,17 +38,44 @@ Route::get('/index/page', function () {
 
 Route::get('/customers/page', function () {
 
-    $customers = Customer::all();
+    if (auth()->check()) {
 
-    return view('customer.customers', ['customers' => $customers]);
+        $user = auth()->user();
+
+        $customers = Customer::all();
+
+        return view('customer.customers', ['customers' => $customers, 'user' => $user]);
+    } else {
+        return redirect()->route('entry.login');
+    }
 })->name('customer.customers');
 
 Route::post('/customer/add', [CustomerController::class, 'customer_add'])->name('customer.add');
 
 Route::get('/log/page', function () {
-    return view('log.logs');
+
+    if (auth()->check()) {
+
+        $user = auth()->user();
+
+        $logs = Log::all();
+
+        return view('log.logs', ['logs' => $logs, 'user' => $user]);
+    } else {
+        return redirect()->route('entry.login');
+    }
 })->name('log.logs');
 
 Route::get('/helpdesk/page', function () {
-    return view('helpdesk.helpdesk');
+
+    if (auth()->check()) {
+
+        $user = auth()->user();
+
+        $tickets = Ticket::all();
+
+        return view('helpdesk.helpdesk', ['tickets' => $tickets, 'user' => $user]);
+    } else {
+        return redirect()->route('entry.login');
+    }
 })->name('helpdesk.helpdesk');
