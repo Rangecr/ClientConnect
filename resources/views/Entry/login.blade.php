@@ -32,7 +32,7 @@
                                         <hr>
                                     </form>
                                     <div class="text-center"><a class="small" href="reset_pass_1.html">Forgot Password?</a></div>
-                                    <div class="text-center"><a class="small" href="register.html">Create an Account!</a></div>
+                                    <div class="text-center"><a class="small" href="{{ route('entry.register') }}">Create an Account!</a></div>
                                 </div>
                             </div>
                         </div>
