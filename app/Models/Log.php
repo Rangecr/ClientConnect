@@ -8,11 +8,12 @@ class Log extends Model
 {
     protected $fillable = [
         'id',
+        'cust_id',
         'type',
         'notes',
     ];
 
     public function customer() {
-        return $this->belongsTo(Customer::class, 'id', 'id');
+        return $this->belongsTo(Customer::class, 'cust_id', 'id');
     }
 }

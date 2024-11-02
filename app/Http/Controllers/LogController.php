@@ -14,7 +14,8 @@ class LogController extends Controller
     public function log_add(Request $request) {
 
         $log = new Log();
-        $log->id = $request->input('id');
+        $log->id = rand('10000', '99999');
+        $log->cust_id = $request->input('cust_id');
         $log->type = $request->input('type');
         $log->notes = $request->input('notes');
 

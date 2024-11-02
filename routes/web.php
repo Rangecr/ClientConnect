@@ -60,6 +60,8 @@ Route::get('/log/page', function () {
 
         $customers = Customer::all();
 
+        $logs = Log::with('customer')->get();
+
         $emails = Log::where('type', 'email')->with('customer')->get();
         $calls = Log::where('type', 'call')->with('customer')->get();
         $meetings = Log::where('type', 'meeting')->with('customer')->get();
@@ -67,6 +69,7 @@ Route::get('/log/page', function () {
         return view('log.logs', [
             'user' => $user,
             'customers' => $customers,
+            'logs' => $logs,
             'emails' => $emails,
             'calls' => $calls,
             'meetings' => $meetings
