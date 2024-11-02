@@ -33,6 +33,8 @@ Route::get('/customers/page', function () {
     return view('customer.customers');
 })->name('customer.customers');
 
+Route::post('/customer/add', [CustomerController::class, 'customer_add'])->name('customer.add');
+
 Route::get('/log/page', function () {
     return view('log.logs');
 })->name('log.logs');
