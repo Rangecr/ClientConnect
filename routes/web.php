@@ -17,3 +17,14 @@ Route::get('/register/page', function () {
 })->name('entry.register');
 
 Route::post('/register', [UserController::class, 'register'])->name('register');
+
+Route::get('/index', function () {
+
+    if (auth()->check()) {
+        $user = auth()->user();
+        return view('index.index', ['user' => $user]);
+    } else {
+        return redirect()->route('entry.login');
+    }
+
+})->name('index');
