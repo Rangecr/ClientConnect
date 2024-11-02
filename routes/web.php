@@ -91,7 +91,7 @@ Route::get('/helpdesk/page', function () {
 
         $customers = Customer::all();
 
-        $tickets = Ticket::all();
+        $tickets = Ticket::with('user', 'customer')->get();
 
         return view('helpdesk.helpdesk', [
             'tickets' => $tickets, 
