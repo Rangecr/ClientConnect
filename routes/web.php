@@ -60,12 +60,16 @@ Route::get('/log/page', function () {
 
         $customers = Customer::all();
 
-        $logs = Log::all();
+        $emails = Log::where('type', 'email')->with('customer')->get();
+        $calls = Log::where('type', 'call')->with('customer')->get();
+        $meetings = Log::where('type', 'meeting')->with('customer')->get();
 
         return view('log.logs', [
-            'logs' => $logs, 
             'user' => $user,
-            'customers' => $customers
+            'customers' => $customers,
+            'emails' => $emails,
+            'calls' => $calls,
+            'meetings' => $meetings
         ]);
     } else {
         return redirect()->route('entry.login');

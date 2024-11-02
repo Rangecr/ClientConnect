@@ -16,10 +16,10 @@ class Customer extends Model
     ];
 
     public function logs() {
-        return $this->hasMany(Log::class);
+        return $this->hasMany(Log::class, 'id', 'id');
     }
 
     public function tickets() {
-        return $this->hasMany(Ticket::class);
+        return $this->hasMany(Ticket::class, 'id', 'id');
     }
 }

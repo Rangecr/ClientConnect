@@ -198,16 +198,22 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
+                                    @if ($emails->isEmpty())
+                                    <p>No Email Logs Found</p>
+                                    @else
+                                    @foreach ($emails as $email)
                                     <div class="row row-mail row-email" style="margin-bottom: 10px;" data-bs-toggle="modal" data-bs-target="#modal-cust-log" type="button">
                                         <div class="col-xl-2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style="font-size: 44px;color: var(--bs-form-invalid-color);">
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M3.00977 5.83789C3.00977 5.28561 3.45748 4.83789 4.00977 4.83789H20C20.5523 4.83789 21 5.28561 21 5.83789V17.1621C21 18.2667 20.1046 19.1621 19 19.1621H5C3.89543 19.1621 3 18.2667 3 17.1621V6.16211C3 6.11449 3.00333 6.06765 3.00977 6.0218V5.83789ZM5 8.06165V17.1621H19V8.06199L14.1215 12.9405C12.9499 14.1121 11.0504 14.1121 9.87885 12.9405L5 8.06165ZM6.57232 6.80554H17.428L12.7073 11.5263C12.3168 11.9168 11.6836 11.9168 11.2931 11.5263L6.57232 6.80554Z" fill="currentColor"></path>
                                             </svg></div>
                                         <div class="col">
-                                            <p style="margin-bottom: 0px;font-weight: bold;color: var(--bs-emphasis-color);">Izzat Saifullah</p>
-                                            <p style="margin-bottom: 0px;font-size: 14px;">misaifullah2003@gmail.com</p>
-                                            <p style="margin-bottom: 0px;font-size: 12px;">Today, 10:45 am</p>
+                                            <p style="margin-bottom: 0px;font-weight: bold;color: var(--bs-emphasis-color);">{{ $email->customer->name }}</p>
+                                            <p style="margin-bottom: 0px;font-size: 14px;">{{ $email->customer->email }}</p>
+                                            <p style="margin-bottom: 0px;font-size: 12px;">{{ $email->created_at }}</p>
                                         </div>
                                     </div>
+                                    @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -222,6 +228,10 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
+                                    @if ($calls->isEmpty())
+                                    <p>No Call Logs Found</p>
+                                    @else
+                                    @foreach ($calls as $call)
                                     <div class="row row-call" style="margin-bottom: 10px;" data-bs-toggle="modal" data-bs-target="#modal-cust-log" type="button">
                                         <div class="col-xl-2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-phone-call" style="font-size: 44px;color: var(--bs-form-valid-border-color);">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -230,11 +240,13 @@
                                                 <path d="M15 3a6 6 0 0 1 6 6"></path>
                                             </svg></div>
                                         <div class="col">
-                                            <p style="margin-bottom: 0px;font-weight: bold;color: var(--bs-emphasis-color);">Izzat Saifullah</p>
-                                            <p style="margin-bottom: 0px;font-size: 14px;">011-16482345</p>
-                                            <p style="margin-bottom: 0px;font-size: 12px;">Today, 10:45 am</p>
+                                            <p style="margin-bottom: 0px;font-weight: bold;color: var(--bs-emphasis-color);">{{ $call->customer->name }}</p>
+                                            <p style="margin-bottom: 0px;font-size: 14px;">{{ $call->customer->p_numb }}</p>
+                                            <p style="margin-bottom: 0px;font-size: 12px;">{{ $call->created_at }}</p>
                                         </div>
                                     </div>
+                                    @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -249,16 +261,22 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
+                                    @if ($meetings->isEmpty())
+                                    <p>No Meeting Logs Found</p>
+                                    @else
+                                    @foreach ($meetings as $meeting)
                                     <div class="row row-meeting" style="margin-bottom: 10px;" data-bs-toggle="modal" data-bs-target="#modal-cust-log" type="button">
                                         <div class="col-xl-2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style="font-size: 44px;color: var(--bs-primary);">
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M20.1702 3L20.1663 3.00453C21.7458 3.09084 23 4.39896 23 6V18C23 19.6569 21.6569 21 20 21H4C2.34315 21 1 19.6569 1 18V6C1 4.34315 2.34315 3 4 3H20.1702ZM10.4764 5H16.4764L13.089 9H7.08899L10.4764 5ZM5.08899 9L8.47644 5H4C3.44772 5 3 5.44772 3 6V9H5.08899ZM3 11V18C3 18.5523 3.44772 19 4 19H20C20.5523 19 21 18.5523 21 18V11H3ZM21 9V6C21 5.44771 20.5523 5 20 5H18.4764L15.089 9H21Z" fill="currentColor"></path>
                                             </svg></div>
                                         <div class="col">
-                                            <p style="margin-bottom: 0px;font-weight: bold;color: var(--bs-emphasis-color);">Izzat Saifullah</p>
-                                            <p style="margin-bottom: 0px;font-size: 14px;">misaifullah2003@gmail.com</p>
-                                            <p style="margin-bottom: 0px;font-size: 12px;">Today, 10:45 am</p>
+                                            <p style="margin-bottom: 0px;font-weight: bold;color: var(--bs-emphasis-color);">{{ $meeting->customer->name }}</p>
+                                            <p style="margin-bottom: 0px;font-size: 14px;">{{ $meeting->customer->email }}</p>
+                                            <p style="margin-bottom: 0px;font-size: 12px;">{{ $meeting->created_at }}</p>
                                         </div>
                                     </div>
+                                    @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </div>
