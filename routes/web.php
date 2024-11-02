@@ -10,4 +10,4 @@ Route::get('/', function () {
     return view('entry.login');
 });
 
-Route::post('/login', [UserController::class, 'createAduan']);
+Route::post('/login', [UserController::class, 'login']);
