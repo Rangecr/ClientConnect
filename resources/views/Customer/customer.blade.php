@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Profile - Brand</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/ionicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 </head>
 
 <body id="page-top">
@@ -210,27 +210,27 @@
                                     <div class="row">
                                         <div class="col">
                                             <p style="font-weight: bold;margin-bottom: 0px;">Name</p>
-                                            <p>Izzat Saifullah</p>
+                                            <p>{{ $customer->name }}</p>
                                         </div>
                                         <div class="col">
                                             <p style="font-weight: bold;margin-bottom: 0px;">Email</p>
-                                            <p>misafullah2003@gmail.com</p>
+                                            <p>{{ $customer->email }}</p>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
                                             <p style="font-weight: bold;margin-bottom: 0px;">Phone Number</p>
-                                            <p>01116482345</p>
+                                            <p>{{ $customer->p_numb }}</p>
                                         </div>
                                         <div class="col">
                                             <p style="font-weight: bold;margin-bottom: 0px;">Address</p>
-                                            <p>Shah Alam, Selangor</p>
+                                            <p>{{ $customer->address }}</p>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
                                             <p style="font-weight: bold;margin-bottom: 0px;">Notes</p>
-                                            <p>Test</p>
+                                            <p>{{ $customer->notes }}</p>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -347,9 +347,9 @@
             </footer>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/theme.js"></script>
+    <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bs-init.js') }}"></script>
+    <script src="{{ asset('assets/js/theme.js') }}"></script>
 </body>
 
 </html>

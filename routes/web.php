@@ -50,6 +50,19 @@ Route::get('/customers/page', function () {
     }
 })->name('customer.customers');
 
+Route::get('/customer/page/{customer}', function(Customer $customer){
+    
+    if (auth()->check()) {
+
+        $user = auth()->user();
+        return view('customer.customer', ['user' => $user, 'customer' => $customer]);
+
+     } else {
+            return redirect()->route('entry.login');
+        }
+
+})->name('customer.customer');
+
 Route::post('/customer/add', [CustomerController::class, 'customer_add'])->name('customer.add');
 
 Route::get('/log/page', function () {
