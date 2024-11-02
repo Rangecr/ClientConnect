@@ -87,10 +87,22 @@ Route::get('/helpdesk/page', function () {
 
         $user = auth()->user();
 
+        $users = user::all();
+
+        $customers = Customer::all();
+
         $tickets = Ticket::all();
 
-        return view('helpdesk.helpdesk', ['tickets' => $tickets, 'user' => $user]);
+        return view('helpdesk.helpdesk', [
+            'tickets' => $tickets, 
+            'customers' => $customers,
+            'user' => $user,
+            'users' => $users
+        ]);
+
     } else {
         return redirect()->route('entry.login');
     }
 })->name('helpdesk.helpdesk');
+
+Route::post('/ticket/add' ,[TicketController::class, 'ticket_add'])->name('ticket.add');

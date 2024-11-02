@@ -67,7 +67,11 @@
                         </ul>
                     </div>
                 </nav>
+                @if (session()->has('alert'))
+                @if (session('alert') === 'success')
                 <div class="alert alert-success alert-dismissible" role="alert"><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="alert"></button><span><strong>Ticket added successfully!</strong></span></div>
+                @endif
+                @endif
                 <div class="modal fade" role="dialog" tabindex="-1" id="modal-ticket">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -75,30 +79,35 @@
                                 <h4 class="modal-title">Add Ticket</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
-                                <form id="ticket-form">
+                                <form action="{{ route('ticket.add') }}" method="post" id="ticket-form">
+                                    @csrf
                                     <div class="row" style="margin-bottom: 10px;">
                                         <div class="col">
-                                            <p style="margin-bottom: 0px;">Requester</p><select class="form-select select2" required="" style="width: 201.2px;border-radius: 5px;">
+                                            <p style="margin-bottom: 0px;">Requester</p><select name="cust_id" class="form-select select2" required="" style="width: 201.2px;border-radius: 5px;">
                                                 <optgroup label="Customers">
-                                                    <option value="12" selected="">This is item 1</option>
-                                                    <option value="13">This is item 2</option>
-                                                    <option value="14">This is item 3</option>
+                                                    @foreach ($customers as $customer)
+
+                                                    <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                                                        
+                                                    @endforeach
                                                 </optgroup>
                                             </select>
                                         </div>
                                         <div class="col">
-                                            <p style="margin-bottom: 0px;">Assign To</p><select class="form-select select2" required="" style="width: 201.2px;border-radius: 5px;">
+                                            <p style="margin-bottom: 0px;">Assign To</p><select name="user_id" class="form-select select2" required="" style="width: 201.2px;border-radius: 5px;">
                                                 <optgroup label="Support">
-                                                    <option value="12" selected="">This is item 1</option>
-                                                    <option value="13">This is item 2</option>
-                                                    <option value="14">This is item 3</option>
+                                                    @foreach ($users as $user)
+
+                                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                                        
+                                                    @endforeach
                                                 </optgroup>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <p style="margin-bottom: 0px;">Priority</p><select class="form-select select2" required="" style="width: 201.2px;border-radius: 5px;">
+                                            <p style="margin-bottom: 0px;">Priority</p><select name="priority" class="form-select select2" required="" style="width: 201.2px;border-radius: 5px;">
                                                 <optgroup label="Set Priority">
                                                     <option value="Low" selected="">Low</option>
                                                     <option value="Medium">Medium</option>
@@ -109,12 +118,12 @@
                                     </div>
                                     <div class="row" style="margin-bottom: 12px;">
                                         <div class="col">
-                                            <p style="margin-bottom: 0px;">Title</p><input class="form-control" type="text" style="width: 300px;border-radius: 5px;" required="">
+                                            <p style="margin-bottom: 0px;">Title</p><input name="title" class="form-control" type="text" style="width: 300px;border-radius: 5px;" required="">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <p style="margin-bottom: 0px;">Description&nbsp;</p><textarea class="form-control" style="width: 300px;border-radius: 5px;" required=""></textarea>
+                                            <p style="margin-bottom: 0px;">Description&nbsp;</p><textarea name="description" class="form-control" style="width: 300px;border-radius: 5px;" required=""></textarea>
                                         </div>
                                     </div>
                                 </form>
