@@ -23,4 +23,19 @@ class UserController extends Controller
         return 'bye';
     }
    }
+
+   public function register(Request $request) {
+
+    $user = new User();
+    $user->id = rand('10000', '99999');
+    $user->name = $request->input('name');
+    $user->email = $request->input('email');
+    $user->p_numb = $request->input('p_numb');
+    $user->password = bcrypt($request->input('password'));
+    $user->role = $request->input('role');
+    $user->save();
+
+    return view('entry.login');
+    
+   }
 }

@@ -23,13 +23,14 @@
                             <div class="text-center">
                                 <h4 class="text-dark mb-4">Create an Account!</h4>
                             </div>
-                            <form class="user">
-                                <div class="mb-3"><input class="form-control form-control-user" type="text" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Name" name="name" required=""></div>
-                                <div class="mb-3"><input class="form-control form-control-user" type="email" id="exampleInputEmail-2" aria-describedby="emailHelp" placeholder="Email Address" name="email" required=""></div>
-                                <div class="mb-3"><input class="form-control form-control-user" type="tel" id="exampleInputEmail-1" aria-describedby="emailHelp" placeholder="Phone Number" name="p_numb" minlength="8" maxlength="15" required=""></div>
+                            <form action="{{ route('register') }}" class="user" method="post">
+                                @csrf
+                                <div class="mb-3"><input class="form-control form-control-user" type="text" aria-describedby="emailHelp" placeholder="Name" name="name" required=""></div>
+                                <div class="mb-3"><input class="form-control form-control-user" type="email" aria-describedby="emailHelp" placeholder="Email Address" name="email" required=""></div>
+                                <div class="mb-3"><input class="form-control form-control-user" type="tel" aria-describedby="emailHelp" placeholder="Phone Number" name="p_numb" minlength="8" maxlength="15" required=""></div>
                                 <div class="row mb-3">
-                                    <div class="col-sm-6 mb-3 mb-sm-0" style="width: 100%;"><input class="form-control form-control-user" type="password" id="examplePasswordInput" placeholder="Password" name="password" required="" minlength="8" maxlength="12"></div>
-                                </div><select class="form-select" style="margin-bottom: 16px;">
+                                    <div class="col-sm-6 mb-3 mb-sm-0" style="width: 100%;"><input class="form-control form-control-user" type="password" placeholder="Password" name="password" required="" minlength="8" maxlength="12"></div>
+                                </div><select name="role" class="form-select" style="margin-bottom: 16px;">
                                     <optgroup label="Role">
                                         <option value="admin" selected="">Admin</option>
                                         <option value="support">Support</option>
@@ -38,7 +39,7 @@
                                 <hr>
                             </form>
                             <div class="text-center"><a class="small" href="forgot-password.html">Forgot Password?</a></div>
-                            <div class="text-center"><a class="small" href="login.html">Already have an account? Login!</a></div>
+                            <div class="text-center"><a class="small" href="{{ route('entry.login') }}">Already have an account? Login!</a></div>
                         </div>
                     </div>
                 </div>
