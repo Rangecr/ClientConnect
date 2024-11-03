@@ -85,8 +85,7 @@
                             <li class="nav-item dropdown no-arrow">
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
                                         aria-expanded="false" data-bs-toggle="dropdown" href="#"><span
-                                            class="d-none d-lg-inline me-2 text-gray-600 small">IZZAT
-                                            SAIFULLAH</span><svg xmlns="http://www.w3.org/2000/svg" width="1em"
+                                            class="d-none d-lg-inline me-2 text-gray-600 small">{{ $user->name }}</span><svg xmlns="http://www.w3.org/2000/svg" width="1em"
                                             height="1em" fill="currentColor" viewBox="0 0 16 16"
                                             class="bi bi-person" style="font-size: 20px;">
                                             <path
