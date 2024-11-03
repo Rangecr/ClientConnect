@@ -20,6 +20,31 @@ Route::get('/', function () {
 
 Route::post('/login', [UserController::class, 'login']);
 
+
+
+
+Route::get('/login/resetpassword', function () {
+    return view('entry.reset_pass_1');
+})->name('entry.reset_pass_1');
+
+Route::post('/login/enteremail', [UserController::class, 'send_reset_code'])->name('enteremail');
+
+Route::get('/login/codesent', function () {
+    return view('entry.reset_pass_2');
+})->name('entry.reset_pass_2');
+
+Route::post('/login/entercode', [UserController::class, 'verify_code'])->name('entercode');
+
+Route::get('/login/newpassword/{email}', function ($email) {
+    return view('entry.reset_pass_3', ['email' => $email]);
+})->name('entry.reset_pass_3');
+
+Route::post('/login/enterpassword', [UserController::class, 'update_password'])->name('enterpassword');
+
+
+
+
+
 Route::get('/register/page', function () {
     return view('entry.register');
 })->name('entry.register');

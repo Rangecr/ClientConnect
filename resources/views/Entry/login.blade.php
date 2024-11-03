@@ -53,7 +53,7 @@
 
                                         <hr>
                                     </form>
-                                    <div class="text-center"><a class="small" href="reset_pass_1.html">Forgot
+                                    <div class="text-center"><a class="small" href="{{ route('entry.reset_pass_1') }}">Forgot
                                             Password?</a></div>
                                     <div class="text-center"><a class="small"
                                             href="{{ route('entry.register') }}">Create an Account!</a></div>
