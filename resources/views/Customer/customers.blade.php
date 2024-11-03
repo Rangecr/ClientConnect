@@ -208,7 +208,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Delete (5 Selected)</h4><button class="btn-close"
+                                <h4 class="modal-title">Delete</h4><button class="btn-close"
                                     type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">

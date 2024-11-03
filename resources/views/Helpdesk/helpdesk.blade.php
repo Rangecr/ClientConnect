@@ -185,10 +185,27 @@
                         </div>
                     </div>
                 </div>
+                <div class="modal fade" role="dialog" tabindex="-1" id="modal-delete">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Delete</h4><button class="btn-close"
+                                    type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to delete the selected customer and all of their data?</p>
+                            </div>
+                            <div class="modal-footer"><button class="btn btn-light" type="button"
+                                    data-bs-dismiss="modal">Close</button><button class="btn btn-primary"
+                                    type="button"
+                                    style="background: var(--bs-danger);border-width: 0px;">Delete</button></div>
+                        </div>
+                    </div>
+                </div>
                 <div class="container-fluid">
                     <div class="row" style="margin-bottom: 10px;">
                         <div class="col"><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button"
-                                style="background: rgb(0,0,0);" data-bs-toggle="modal"
+                                style="background: rgb(0,0,0);margin-right:10px;" data-bs-toggle="modal"
                                 data-bs-target="#modal-ticket"><svg xmlns="http://www.w3.org/2000/svg" width="1em"
                                     height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                                     fill="none" stroke-linecap="round" stroke-linejoin="round"
@@ -201,7 +218,10 @@
                                     <path
                                         d="M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-3a2 2 0 0 0 0 -4v-3a2 2 0 0 1 2 -2">
                                     </path>
-                                </svg>&nbsp;Add Ticket</a></div>
+                                </svg>&nbsp;Add Ticket</a><a
+                                class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button"
+                                style="background: var(--bs-danger);border-width: 0px;" data-bs-toggle="modal"
+                                data-bs-target="#modal-delete">Delete Selected Customer</a></div>
                         <div class="col" style="text-align: right;"><a
                                 class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button"
                                 style="background: rgb(0,0,0);" data-bs-toggle="modal"
