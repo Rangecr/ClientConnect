@@ -400,9 +400,9 @@
                                                     @endif
 
                                                     <td>{{ $ticket->created_at }}</td>
-                                                    <td><button class="btn btn-primary" type="button"
+                                                    <td><a class="btn btn-primary" href="#"
                                                             style="background: rgba(78,115,223,0);color: rgb(0,0,0);border-width: 0px;font-style: italic;">View
-                                                            Details</button></td>
+                                                            Details</a></td>
                                                 </tr>
                                             @endforeach
                                         </form>

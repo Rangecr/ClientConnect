@@ -208,8 +208,8 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Delete</h4><button class="btn-close"
-                                    type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                                <h4 class="modal-title">Delete</h4><button class="btn-close" type="button"
+                                    aria-label="Close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
                                 <p>Are you sure you want to delete the selected customer and all of their data?</p>
@@ -286,13 +286,11 @@
                                                 <td>{{ $customer->email }}</td>
                                                 <td>{{ $customer->p_numb }}</td>
                                                 <td>{{ $customer->created_at }}</td>
-                                                <form action="{{ route('customer.customer', ['customer' => $customer->id]) }}" method="get">
-                                                    @csrf
-                                                    <td style="font-style: italic;text-decoration:  underline;"><button
-                                                            class="btn btn-primary btn-view-cust" type="submit"
-                                                            style="background: rgba(78,115,223,0);color: rgb(0,0,0);border-width: 0px;font-style: italic;">View
-                                                            Details</button></td>
-                                                </form>
+                                                <td style="font-style: italic;text-decoration:  underline;"><a
+                                                        href="{{ route('customer.customer', ['customer' => $customer->id]) }}"
+                                                        class="btn btn-primary btn-view-cust"
+                                                        style="background: rgba(78,115,223,0);color: rgb(0,0,0);border-width: 0px;font-style: italic;">View
+                                                        Details</a></td>
                                             </tr>
                                         @endforeach
                                     </tbody>
