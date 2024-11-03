@@ -113,11 +113,26 @@
                                     added successfully!</strong></span></div>
                     @endif
                 @endif
-                <div class="alert alert-success alert-dismissible" role="alert"
-                    style="color: var(--bs-danger-text-emphasis);border-color: var(--bs-danger-border-subtle);background: var(--bs-danger-bg-subtle);">
-                    <button class="btn-close" type="button" aria-label="Close"
-                        data-bs-dismiss="alert"></button><span><strong>5 Selected Customer Deleted!</strong></span>
-                </div>
+                @if (session()->has('alert'))
+                    @if (session('alert') === 'delete')
+                        <div class="alert alert-success alert-dismissible" role="alert"
+                            style="color: var(--bs-danger-text-emphasis);border-color: var(--bs-danger-border-subtle);background: var(--bs-danger-bg-subtle);">
+                            <button class="btn-close" type="button" aria-label="Close"
+                                data-bs-dismiss="alert"></button><span><strong>Selected Customer
+                                    Deleted!</strong></span>
+                        </div>
+                    @endif
+                @endif
+                @if (session()->has('alert'))
+                    @if (session('alert') === 'empty')
+                        <div class="alert alert-success alert-dismissible" role="alert"
+                            style="color: var(--bs-danger-text-emphasis);border-color: var(--bs-danger-border-subtle);background: var(--bs-danger-bg-subtle);">
+                            <button class="btn-close" type="button" aria-label="Close"
+                                data-bs-dismiss="alert"></button><span><strong>No customer deleted! Please select at
+                                    least one!</strong></span>
+                        </div>
+                    @endif
+                @endif
                 <div class="modal fade" role="dialog" tabindex="-1" id="modal-customer">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -216,7 +231,7 @@
                             </div>
                             <div class="modal-footer"><button class="btn btn-light" type="button"
                                     data-bs-dismiss="modal">Close</button><button class="btn btn-primary"
-                                    type="button"
+                                    type="submit" form="delete"
                                     style="background: var(--bs-danger);border-width: 0px;">Delete</button></div>
                         </div>
                     </div>
@@ -279,20 +294,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($customers as $customer)
-                                            <tr>
-                                                <td style="text-align: center;"><input type="checkbox"></td>
-                                                <td>{{ $customer->name }}</td>
-                                                <td>{{ $customer->email }}</td>
-                                                <td>{{ $customer->p_numb }}</td>
-                                                <td>{{ $customer->created_at }}</td>
-                                                <td style="font-style: italic;text-decoration:  underline;"><a
-                                                        href="{{ route('customer.customer', ['customer' => $customer->id]) }}"
-                                                        class="btn btn-primary btn-view-cust"
-                                                        style="background: rgba(78,115,223,0);color: rgb(0,0,0);border-width: 0px;font-style: italic;">View
-                                                        Details</a></td>
-                                            </tr>
-                                        @endforeach
+                                        <form id="delete" action="{{ route('customer.delete') }}" method="POST">
+                                            @csrf
+                                            @foreach ($customers as $customer)
+                                                <tr>
+                                                    <td style="text-align: center;"><input name="ids[]" value="{{ $customer->id }}" type="checkbox"></td>
+                                                    <td>{{ $customer->name }}</td>
+                                                    <td>{{ $customer->email }}</td>
+                                                    <td>{{ $customer->p_numb }}</td>
+                                                    <td>{{ $customer->created_at }}</td>
+                                                    <td style="font-style: italic;text-decoration:  underline;"><a
+                                                            href="{{ route('customer.customer', ['customer' => $customer->id]) }}"
+                                                            class="btn btn-primary btn-view-cust"
+                                                            style="background: rgba(78,115,223,0);color: rgb(0,0,0);border-width: 0px;font-style: italic;">View
+                                                            Details</a></td>
+                                                </tr>
+                                            @endforeach
+                                        </form>
                                     </tbody>
                                     <tfoot>
                                         <tr></tr>

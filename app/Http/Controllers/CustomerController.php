@@ -25,4 +25,20 @@ class CustomerController extends Controller
 
         return redirect()->route('customer.customers')->with('alert', 'success');
     }
+
+    public function customer_delete(Request $request) {
+
+        $ids = $request->input('ids');
+
+        if (!empty($ids)) {
+
+            Customer::whereIn('id', $ids)->delete();
+
+            return redirect()->route('customer.customers')->with('alert', 'delete');
+        } else {
+            return redirect()->route('customer.customers')->with('alert', 'empty');
+        }
+        
+
+    }
 }

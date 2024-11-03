@@ -70,6 +70,8 @@ Route::get('/customer/page/{customer}', function(Customer $customer){
 
 Route::post('/customer/add', [CustomerController::class, 'customer_add'])->name('customer.add');
 
+Route::post('/customer/delete', [CustomerController::class, 'customer_delete'])->name('customer.delete');
+
 Route::get('/log/page', function () {
 
     if (auth()->check()) {
