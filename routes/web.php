@@ -55,10 +55,12 @@ Route::get('/customer/page/{customer}', function(Customer $customer){
     if (auth()->check()) {
 
         $user = auth()->user();
-        
+
+        $users = User::all();
+
         $customer = $customer->load('logs', 'tickets');
         
-        return view('customer.customer', ['user' => $user, 'customer' => $customer]);
+        return view('customer.customer', ['user' => $user, 'customer' => $customer, 'users' => $users]);
 
      } else {
             return redirect()->route('entry.login');

@@ -24,6 +24,14 @@ class TicketController extends Controller
 
         $ticket->save();
 
+        $page = $request->input('page');
+
+        if ($page === 'customer') {
+            return redirect()
+            ->route('customer.customer', ['customer' => $ticket->cust_id])
+            ->with('alert', 'success-ticket');
+        }
+
         return redirect()->route('helpdesk.helpdesk')->with('alert', 'success');
 
     }
