@@ -20,7 +20,7 @@ class UserController extends Controller
     if (Auth::attempt($credentials)) {
         return redirect()->route('index.index');
     } else {
-        return redirect()->route('entry.login');
+        return redirect()->route('entry.login')->with('alert', 'error')->withInput();
     }
    }
 
