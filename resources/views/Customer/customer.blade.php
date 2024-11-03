@@ -105,22 +105,43 @@
                         </ul>
                     </div>
                 </nav>
+                <div class="modal fade" role="dialog" tabindex="-1" id="modal-delete">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Delete</h4><button class="btn-close" type="button"
+                                    aria-label="Close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to delete this customer and all of their data?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                                <form id="delete" action="{{ route('customer.delete') }}" method="POST">
+                                    @csrf
+                                    <input type="text" name="ids[]" value="{{ $customer->id }}" hidden>
+                                    <button class="btn btn-primary" type="submit"
+                                        style="background: var(--bs-danger);border-width: 0px;">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 @if (session()->has('alert'))
                     @if (session('alert') === 'success-log')
                         <div class="alert alert-success alert-dismissible" role="alert"><button class="btn-close"
-                                type="button" aria-label="Close"
-                                data-bs-dismiss="alert"></button><span><strong>Log
+                                type="button" aria-label="Close" data-bs-dismiss="alert"></button><span><strong>Log
                                     added successfully!</strong></span></div>
                     @endif
                 @endif
                 @if (session()->has('alert'))
-                @if (session('alert') === 'success-ticket')
-                    <div class="alert alert-success alert-dismissible" role="alert"><button class="btn-close"
-                            type="button" aria-label="Close"
-                            data-bs-dismiss="alert"></button><span><strong>Ticket
-                                added successfully!</strong></span></div>
+                    @if (session('alert') === 'success-ticket')
+                        <div class="alert alert-success alert-dismissible" role="alert"><button class="btn-close"
+                                type="button" aria-label="Close"
+                                data-bs-dismiss="alert"></button><span><strong>Ticket
+                                    added successfully!</strong></span></div>
+                    @endif
                 @endif
-            @endif
                 <div class="modal fade" role="dialog" tabindex="-1" id="modal-ticket">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -137,8 +158,8 @@
                                             <p style="margin-bottom: 0px;">Requester</p>
                                             <p>{{ $customer->name }}</p>
                                             <input name="cust_id" value="{{ $customer->id }}" hidden
-                                            class="form-control" type="text"
-                                            style="width: 300px;border-radius: 5px;">
+                                                class="form-control" type="text"
+                                                style="width: 300px;border-radius: 5px;">
                                             </select>
                                         </div>
                                         <div class="col">
@@ -193,7 +214,8 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Add Log</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                                <h4 class="modal-title">Add Log</h4><button class="btn-close" type="button"
+                                    aria-label="Close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
                                 <form action="{{ route('log.add') }}" id="log-form" method="post">
@@ -203,11 +225,13 @@
                                         <div class="col">
                                             <p style="margin-bottom: 0px;">Customer</p>
 
-                                                <p>{{ $customer->name }}</p>
-                                                <input type="text" name="cust_id" value="{{ $customer->id }}" hidden>
+                                            <p>{{ $customer->name }}</p>
+                                            <input type="text" name="cust_id" value="{{ $customer->id }}" hidden>
                                         </div>
                                         <div class="col">
-                                            <p style="margin-bottom: 0px;">Interaction</p><select name="type" class="form-select select2" required="" style="width: 201.2px;border-radius: 5px;">
+                                            <p style="margin-bottom: 0px;">Interaction</p><select name="type"
+                                                class="form-select select2" required=""
+                                                style="width: 201.2px;border-radius: 5px;">
                                                 <optgroup label="Type of Interaction">
                                                     <option value="Email" selected="">Email</option>
                                                     <option value="Call">Call</option>
@@ -218,12 +242,15 @@
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <p style="margin-bottom: 0px;">Notes</p><textarea name="notes" class="form-control" style="width: 300px;border-radius: 5px;" required=""></textarea>
+                                            <p style="margin-bottom: 0px;">Notes</p>
+                                            <textarea name="notes" class="form-control" style="width: 300px;border-radius: 5px;" required=""></textarea>
                                         </div>
                                     </div>
                                 </form>
                             </div>
-                            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);" form="log-form">Add</button></div>
+                            <div class="modal-footer"><button class="btn btn-light" type="button"
+                                    data-bs-dismiss="modal">Close</button><button class="btn btn-primary"
+                                    type="submit" style="background: rgb(0,0,0);" form="log-form">Add</button></div>
                         </div>
                     </div>
                 </div>
@@ -455,7 +482,8 @@
                                                                 {{ $customer->name }}</p>
                                                             <p style="margin-bottom: 0px;font-size: 14px;">
                                                                 {{ $customer->email }}</p>
-                                                            <p style="margin-bottom: 0px;font-size: 12px;">{{ $log->created_at }}</p>
+                                                            <p style="margin-bottom: 0px;font-size: 12px;">
+                                                                {{ $log->created_at }}</p>
                                                         </div>
                                                     </div>
                                                 @elseif ($log->type === 'Call')
@@ -480,8 +508,10 @@
                                                             <p
                                                                 style="margin-bottom: 0px;font-weight: bold;color: var(--bs-emphasis-color);">
                                                                 {{ $customer->name }}</p>
-                                                            <p style="margin-bottom: 0px;font-size: 14px;">{{ $customer->p_numb }}</p>
-                                                            <p style="margin-bottom: 0px;font-size: 12px;">{{ $log->created_at }}</p>
+                                                            <p style="margin-bottom: 0px;font-size: 14px;">
+                                                                {{ $customer->p_numb }}</p>
+                                                            <p style="margin-bottom: 0px;font-size: 12px;">
+                                                                {{ $log->created_at }}</p>
                                                         </div>
                                                     </div>
                                                 @elseif ($log->type === 'Meeting')
@@ -502,7 +532,8 @@
                                                                 {{ $customer->name }}</p>
                                                             <p style="margin-bottom: 0px;font-size: 14px;">
                                                                 {{ $customer->email }}</p>
-                                                            <p style="margin-bottom: 0px;font-size: 12px;">{{ $log->created_at }}</p>
+                                                            <p style="margin-bottom: 0px;font-size: 12px;">
+                                                                {{ $log->created_at }}</p>
                                                         </div>
                                                     </div>
                                                 @endif

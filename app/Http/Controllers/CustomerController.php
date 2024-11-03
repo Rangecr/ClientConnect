@@ -38,7 +38,6 @@ class CustomerController extends Controller
         } else {
             return redirect()->route('customer.customers')->with('alert', 'empty');
         }
-        
-
     }
+    
 }
