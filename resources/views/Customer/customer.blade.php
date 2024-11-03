@@ -106,13 +106,21 @@
                     </div>
                 </nav>
                 @if (session()->has('alert'))
-                    @if (session('alert') === 'success')
+                    @if (session('alert') === 'success-log')
                         <div class="alert alert-success alert-dismissible" role="alert"><button class="btn-close"
                                 type="button" aria-label="Close"
                                 data-bs-dismiss="alert"></button><span><strong>Log
                                     added successfully!</strong></span></div>
                     @endif
                 @endif
+                @if (session()->has('alert'))
+                @if (session('alert') === 'success-ticket')
+                    <div class="alert alert-success alert-dismissible" role="alert"><button class="btn-close"
+                            type="button" aria-label="Close"
+                            data-bs-dismiss="alert"></button><span><strong>Ticket
+                                added successfully!</strong></span></div>
+                @endif
+            @endif
                 <div class="modal fade" role="dialog" tabindex="-1" id="modal-ticket">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -185,20 +193,21 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Add Log</h4><button class="btn-close" type="button"
-                                    aria-label="Close" data-bs-dismiss="modal"></button>
+                                <h4 class="modal-title">Add Log</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
-                                <form id="log-form">
+                                <form action="{{ route('log.add') }}" id="log-form" method="post">
+                                    @csrf
+                                    <input type="text" name="page" value="customer" hidden>
                                     <div class="row" style="margin-bottom: 10px;">
                                         <div class="col">
                                             <p style="margin-bottom: 0px;">Customer</p>
-                                            <p style="margin-bottom: 0px;font-weight: bold;">Izzat Saifullah</p>
+
+                                                <p>{{ $customer->name }}</p>
+                                                <input type="text" name="cust_id" value="{{ $customer->id }}" hidden>
                                         </div>
                                         <div class="col">
-                                            <p style="margin-bottom: 0px;">Interaction</p><select
-                                                class="form-select select2" required=""
-                                                style="width: 201.2px;border-radius: 5px;">
+                                            <p style="margin-bottom: 0px;">Interaction</p><select name="type" class="form-select select2" required="" style="width: 201.2px;border-radius: 5px;">
                                                 <optgroup label="Type of Interaction">
                                                     <option value="Email" selected="">Email</option>
                                                     <option value="Call">Call</option>
@@ -209,15 +218,12 @@
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <p style="margin-bottom: 0px;">Notes</p>
-                                            <textarea class="form-control" style="width: 300px;border-radius: 5px;" required=""></textarea>
+                                            <p style="margin-bottom: 0px;">Notes</p><textarea name="notes" class="form-control" style="width: 300px;border-radius: 5px;" required=""></textarea>
                                         </div>
                                     </div>
                                 </form>
                             </div>
-                            <div class="modal-footer"><button class="btn btn-light" type="button"
-                                    data-bs-dismiss="modal">Close</button><button class="btn btn-primary"
-                                    type="submit" style="background: rgb(0,0,0);" form="log-form">Add</button></div>
+                            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit" style="background: rgb(0,0,0);" form="log-form">Add</button></div>
                         </div>
                     </div>
                 </div>

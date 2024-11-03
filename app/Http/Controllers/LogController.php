@@ -21,6 +21,14 @@ class LogController extends Controller
 
         $log->save();
 
+        $page = $request->input('page');
+
+        if($page === 'customer') {
+            return redirect()
+            ->route('customer.customer', ['customer' =>$log->cust_id])
+            ->with('alert', 'success-log');
+        }
+
         return redirect()->route('log.logs')->with('alert', 'success');
 
     }
