@@ -35,4 +35,20 @@ class TicketController extends Controller
         return redirect()->route('helpdesk.helpdesk')->with('alert', 'success');
 
     }
+
+    public function ticket_delete(Request $request) {
+
+        $ids = $request->input('ids');
+
+        if (!empty($ids)) {
+
+            Ticket::whereIn('id', $ids)->delete();
+
+            return redirect()->route('helpdesk.helpdesk')->with('alert', 'delete');
+        } else {
+            return redirect()->route('helpdesk.helpdesk')->with('alert', 'empty');
+        }
+        
+
+    }
 }
