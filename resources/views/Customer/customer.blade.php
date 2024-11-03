@@ -377,63 +377,74 @@
                                             </div>
                                         </div>
                                         <div class="card-body" style="overflow: auto;max-height: 247.2px;">
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Title</th>
-                                                            <th>Priority</th>
-                                                            <th>Status</th>
-                                                            <th>Created At</th>
-                                                            <th></th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach ($customer->tickets as $ticket)
+                                            @if ($customer->tickets->isEmpty())
+                                                <p>No Tickets Found</p>
+                                            @else
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <thead>
                                                             <tr>
-                                                                <td>{{ $ticket->title }}</td>
-                                                                @if ($ticket->priority === 'Low')
-                                                                    <td><button class="btn btn-primary" type="button"
-                                                                            style="font-size: 12px;font-weight: bold;background: var(--bs-success);border-width: 0px;">Low</button>
-                                                                    </td>
-                                                                @elseif ($ticket->priority === 'Medium')
-                                                                    <td><button class="btn btn-primary" type="button"
-                                                                            style="font-size: 12px;font-weight: bold;background: var(--bs-warning);border-width: 0px;">Medium</button>
-                                                                    </td>
-                                                                @elseif ($ticket->priority === 'High')
-                                                                    <td><button class="btn btn-primary" type="button"
-                                                                            style="font-size: 12px;font-weight: bold;background: var(--bs-danger);border-width: 0px;">High</button>
-                                                                    </td>
-                                                                @endif
-
-                                                                @if ($ticket->status === 'Open')
-                                                                    <td><button class="btn btn-primary" type="button"
-                                                                            style="font-size: 12px;font-weight: bold;background: var(--bs-form-invalid-color);border-width: 0px;">Open</button>
-                                                                    </td>
-                                                                @elseif ($ticket->status === 'On progress')
-                                                                    <td><button class="btn btn-primary" type="button"
-                                                                            style="font-size: 12px;font-weight: bold;background: var(--bs-warning);border-width: 0px;">In
-                                                                            Progress</button></td>
-                                                                @elseif ($ticket->status === 'Resolved')
-                                                                    <td><button class="btn btn-primary" type="button"
-                                                                            style="font-size: 12px;font-weight: bold;background: var(--bs-blue);border-width: 0px;">Resolved</button>
-                                                                    </td>
-                                                                @elseif ($ticket->status === 'Closed')
-                                                                    <td><button class="btn btn-primary" type="button"
-                                                                            style="font-size: 12px;font-weight: bold;background: var(--bs-dark);border-width: 0px;">Closed</button>
-                                                                    </td>
-                                                                @endif
-
-                                                                <td>{{ $ticket->created_at }}</td>
-                                                                <td><button class="btn btn-primary btn-view-ticket"
-                                                                        type="button"
-                                                                        style="background: rgba(78,115,223,0);color: rgb(0,0,0);border-width: 0px;font-style: italic;">View
-                                                                        Details</button></td>
+                                                                <th>Title</th>
+                                                                <th>Priority</th>
+                                                                <th>Status</th>
+                                                                <th>Created At</th>
+                                                                <th></th>
                                                             </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach ($customer->tickets as $ticket)
+                                                                <tr>
+                                                                    <td>{{ $ticket->title }}</td>
+                                                                    @if ($ticket->priority === 'Low')
+                                                                        <td><button class="btn btn-primary"
+                                                                                type="button"
+                                                                                style="font-size: 12px;font-weight: bold;background: var(--bs-success);border-width: 0px;">Low</button>
+                                                                        </td>
+                                                                    @elseif ($ticket->priority === 'Medium')
+                                                                        <td><button class="btn btn-primary"
+                                                                                type="button"
+                                                                                style="font-size: 12px;font-weight: bold;background: var(--bs-warning);border-width: 0px;">Medium</button>
+                                                                        </td>
+                                                                    @elseif ($ticket->priority === 'High')
+                                                                        <td><button class="btn btn-primary"
+                                                                                type="button"
+                                                                                style="font-size: 12px;font-weight: bold;background: var(--bs-danger);border-width: 0px;">High</button>
+                                                                        </td>
+                                                                    @endif
+
+                                                                    @if ($ticket->status === 'Open')
+                                                                        <td><button class="btn btn-primary"
+                                                                                type="button"
+                                                                                style="font-size: 12px;font-weight: bold;background: var(--bs-form-invalid-color);border-width: 0px;">Open</button>
+                                                                        </td>
+                                                                    @elseif ($ticket->status === 'On progress')
+                                                                        <td><button class="btn btn-primary"
+                                                                                type="button"
+                                                                                style="font-size: 12px;font-weight: bold;background: var(--bs-warning);border-width: 0px;">In
+                                                                                Progress</button></td>
+                                                                    @elseif ($ticket->status === 'Resolved')
+                                                                        <td><button class="btn btn-primary"
+                                                                                type="button"
+                                                                                style="font-size: 12px;font-weight: bold;background: var(--bs-blue);border-width: 0px;">Resolved</button>
+                                                                        </td>
+                                                                    @elseif ($ticket->status === 'Closed')
+                                                                        <td><button class="btn btn-primary"
+                                                                                type="button"
+                                                                                style="font-size: 12px;font-weight: bold;background: var(--bs-dark);border-width: 0px;">Closed</button>
+                                                                        </td>
+                                                                    @endif
+
+                                                                    <td>{{ $ticket->created_at }}</td>
+                                                                    <td><button class="btn btn-primary btn-view-ticket"
+                                                                            type="button"
+                                                                            style="background: rgba(78,115,223,0);color: rgb(0,0,0);border-width: 0px;font-style: italic;">View
+                                                                            Details</button></td>
+                                                                </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -463,81 +474,88 @@
                                         </div>
                                         <div class="card-body" style="max-height: 251px;overflow: auto;">
 
-                                            @foreach ($customer->logs as $log)
-                                                @if ($log->type === 'Email')
-                                                    <div class="row row-mail row-email" style="margin-bottom: 10px;"
-                                                        data-bs-toggle="modal" data-bs-target="#modal-cust-log"
-                                                        type="button">
-                                                        <div class="col-xl-2"><svg xmlns="http://www.w3.org/2000/svg"
-                                                                width="1em" height="1em" viewBox="0 0 24 24"
-                                                                fill="none"
-                                                                style="font-size: 44px;color: var(--bs-form-invalid-color);">
-                                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                    d="M3.00977 5.83789C3.00977 5.28561 3.45748 4.83789 4.00977 4.83789H20C20.5523 4.83789 21 5.28561 21 5.83789V17.1621C21 18.2667 20.1046 19.1621 19 19.1621H5C3.89543 19.1621 3 18.2667 3 17.1621V6.16211C3 6.11449 3.00333 6.06765 3.00977 6.0218V5.83789ZM5 8.06165V17.1621H19V8.06199L14.1215 12.9405C12.9499 14.1121 11.0504 14.1121 9.87885 12.9405L5 8.06165ZM6.57232 6.80554H17.428L12.7073 11.5263C12.3168 11.9168 11.6836 11.9168 11.2931 11.5263L6.57232 6.80554Z"
-                                                                    fill="currentColor"></path>
-                                                            </svg></div>
-                                                        <div class="col">
-                                                            <p
-                                                                style="margin-bottom: 0px;font-weight: bold;color: var(--bs-emphasis-color);">
-                                                                {{ $customer->name }}</p>
-                                                            <p style="margin-bottom: 0px;font-size: 14px;">
-                                                                {{ $customer->email }}</p>
-                                                            <p style="margin-bottom: 0px;font-size: 12px;">
-                                                                {{ $log->created_at }}</p>
+                                            @if ($customer->logs->isEmpty())
+                                                <p>No Logs Found</p>
+                                            @else
+                                                @foreach ($customer->logs as $log)
+                                                    @if ($log->type === 'Email')
+                                                        <div class="row row-mail row-email"
+                                                            style="margin-bottom: 10px;" data-bs-toggle="modal"
+                                                            data-bs-target="#modal-cust-log" type="button">
+                                                            <div class="col-xl-2"><svg
+                                                                    xmlns="http://www.w3.org/2000/svg" width="1em"
+                                                                    height="1em" viewBox="0 0 24 24" fill="none"
+                                                                    style="font-size: 44px;color: var(--bs-form-invalid-color);">
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                        d="M3.00977 5.83789C3.00977 5.28561 3.45748 4.83789 4.00977 4.83789H20C20.5523 4.83789 21 5.28561 21 5.83789V17.1621C21 18.2667 20.1046 19.1621 19 19.1621H5C3.89543 19.1621 3 18.2667 3 17.1621V6.16211C3 6.11449 3.00333 6.06765 3.00977 6.0218V5.83789ZM5 8.06165V17.1621H19V8.06199L14.1215 12.9405C12.9499 14.1121 11.0504 14.1121 9.87885 12.9405L5 8.06165ZM6.57232 6.80554H17.428L12.7073 11.5263C12.3168 11.9168 11.6836 11.9168 11.2931 11.5263L6.57232 6.80554Z"
+                                                                        fill="currentColor"></path>
+                                                                </svg></div>
+                                                            <div class="col">
+                                                                <p
+                                                                    style="margin-bottom: 0px;font-weight: bold;color: var(--bs-emphasis-color);">
+                                                                    {{ $customer->name }}</p>
+                                                                <p style="margin-bottom: 0px;font-size: 14px;">
+                                                                    {{ $customer->email }}</p>
+                                                                <p style="margin-bottom: 0px;font-size: 12px;">
+                                                                    {{ $log->created_at }}</p>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                @elseif ($log->type === 'Call')
-                                                    <div class="row row-call" style="margin-bottom: 10px;"
-                                                        data-bs-toggle="modal" data-bs-target="#modal-cust-log"
-                                                        type="button">
-                                                        <div class="col-xl-2"><svg xmlns="http://www.w3.org/2000/svg"
-                                                                width="1em" height="1em" viewBox="0 0 24 24"
-                                                                stroke-width="2" stroke="currentColor" fill="none"
-                                                                stroke-linecap="round" stroke-linejoin="round"
-                                                                class="icon icon-tabler icon-tabler-phone-call"
-                                                                style="font-size: 44px;color: var(--bs-form-valid-border-color);">
-                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none">
-                                                                </path>
-                                                                <path
-                                                                    d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2">
-                                                                </path>
-                                                                <path d="M15 7a2 2 0 0 1 2 2"></path>
-                                                                <path d="M15 3a6 6 0 0 1 6 6"></path>
-                                                            </svg></div>
-                                                        <div class="col">
-                                                            <p
-                                                                style="margin-bottom: 0px;font-weight: bold;color: var(--bs-emphasis-color);">
-                                                                {{ $customer->name }}</p>
-                                                            <p style="margin-bottom: 0px;font-size: 14px;">
-                                                                {{ $customer->p_numb }}</p>
-                                                            <p style="margin-bottom: 0px;font-size: 12px;">
-                                                                {{ $log->created_at }}</p>
+                                                    @elseif ($log->type === 'Call')
+                                                        <div class="row row-call" style="margin-bottom: 10px;"
+                                                            data-bs-toggle="modal" data-bs-target="#modal-cust-log"
+                                                            type="button">
+                                                            <div class="col-xl-2"><svg
+                                                                    xmlns="http://www.w3.org/2000/svg" width="1em"
+                                                                    height="1em" viewBox="0 0 24 24"
+                                                                    stroke-width="2" stroke="currentColor"
+                                                                    fill="none" stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    class="icon icon-tabler icon-tabler-phone-call"
+                                                                    style="font-size: 44px;color: var(--bs-form-valid-border-color);">
+                                                                    <path stroke="none" d="M0 0h24v24H0z"
+                                                                        fill="none">
+                                                                    </path>
+                                                                    <path
+                                                                        d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2">
+                                                                    </path>
+                                                                    <path d="M15 7a2 2 0 0 1 2 2"></path>
+                                                                    <path d="M15 3a6 6 0 0 1 6 6"></path>
+                                                                </svg></div>
+                                                            <div class="col">
+                                                                <p
+                                                                    style="margin-bottom: 0px;font-weight: bold;color: var(--bs-emphasis-color);">
+                                                                    {{ $customer->name }}</p>
+                                                                <p style="margin-bottom: 0px;font-size: 14px;">
+                                                                    {{ $customer->p_numb }}</p>
+                                                                <p style="margin-bottom: 0px;font-size: 12px;">
+                                                                    {{ $log->created_at }}</p>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                @elseif ($log->type === 'Meeting')
-                                                    <div class="row row-meeting" style="margin-bottom: 10px;"
-                                                        data-bs-toggle="modal" data-bs-target="#modal-cust-log"
-                                                        type="button">
-                                                        <div class="col-xl-2"><svg xmlns="http://www.w3.org/2000/svg"
-                                                                width="1em" height="1em" viewBox="0 0 24 24"
-                                                                fill="none"
-                                                                style="font-size: 44px;color: var(--bs-primary);">
-                                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                    d="M20.1702 3L20.1663 3.00453C21.7458 3.09084 23 4.39896 23 6V18C23 19.6569 21.6569 21 20 21H4C2.34315 21 1 19.6569 1 18V6C1 4.34315 2.34315 3 4 3H20.1702ZM10.4764 5H16.4764L13.089 9H7.08899L10.4764 5ZM5.08899 9L8.47644 5H4C3.44772 5 3 5.44772 3 6V9H5.08899ZM3 11V18C3 18.5523 3.44772 19 4 19H20C20.5523 19 21 18.5523 21 18V11H3ZM21 9V6C21 5.44771 20.5523 5 20 5H18.4764L15.089 9H21Z"
-                                                                    fill="currentColor"></path>
-                                                            </svg></div>
-                                                        <div class="col">
-                                                            <p
-                                                                style="margin-bottom: 0px;font-weight: bold;color: var(--bs-emphasis-color);">
-                                                                {{ $customer->name }}</p>
-                                                            <p style="margin-bottom: 0px;font-size: 14px;">
-                                                                {{ $customer->email }}</p>
-                                                            <p style="margin-bottom: 0px;font-size: 12px;">
-                                                                {{ $log->created_at }}</p>
+                                                    @elseif ($log->type === 'Meeting')
+                                                        <div class="row row-meeting" style="margin-bottom: 10px;"
+                                                            data-bs-toggle="modal" data-bs-target="#modal-cust-log"
+                                                            type="button">
+                                                            <div class="col-xl-2"><svg
+                                                                    xmlns="http://www.w3.org/2000/svg" width="1em"
+                                                                    height="1em" viewBox="0 0 24 24" fill="none"
+                                                                    style="font-size: 44px;color: var(--bs-primary);">
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                        d="M20.1702 3L20.1663 3.00453C21.7458 3.09084 23 4.39896 23 6V18C23 19.6569 21.6569 21 20 21H4C2.34315 21 1 19.6569 1 18V6C1 4.34315 2.34315 3 4 3H20.1702ZM10.4764 5H16.4764L13.089 9H7.08899L10.4764 5ZM5.08899 9L8.47644 5H4C3.44772 5 3 5.44772 3 6V9H5.08899ZM3 11V18C3 18.5523 3.44772 19 4 19H20C20.5523 19 21 18.5523 21 18V11H3ZM21 9V6C21 5.44771 20.5523 5 20 5H18.4764L15.089 9H21Z"
+                                                                        fill="currentColor"></path>
+                                                                </svg></div>
+                                                            <div class="col">
+                                                                <p
+                                                                    style="margin-bottom: 0px;font-weight: bold;color: var(--bs-emphasis-color);">
+                                                                    {{ $customer->name }}</p>
+                                                                <p style="margin-bottom: 0px;font-size: 14px;">
+                                                                    {{ $customer->email }}</p>
+                                                                <p style="margin-bottom: 0px;font-size: 12px;">
+                                                                    {{ $log->created_at }}</p>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                @endif
-                                            @endforeach
+                                                    @endif
+                                                @endforeach
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
