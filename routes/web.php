@@ -55,6 +55,9 @@ Route::get('/customer/page/{customer}', function(Customer $customer){
     if (auth()->check()) {
 
         $user = auth()->user();
+        
+        $customer = $customer->load('logs', 'tickets');
+        
         return view('customer.customer', ['user' => $user, 'customer' => $customer]);
 
      } else {

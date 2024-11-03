@@ -19,7 +19,7 @@ class TicketController extends Controller
         $ticket->user_id = $request->input('user_id');
         $ticket->title = $request->input('title');
         $ticket->description = $request->input('description');
-        $ticket->status = 'open';
+        $ticket->status = 'Open';
         $ticket->priority = $request->input('priority');
 
         $ticket->save();

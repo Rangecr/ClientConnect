@@ -235,7 +235,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col"><button class="btn btn-primary" type="button" style="background: var(--bs-danger);border-width: 0px;" data-bs-toggle="modal" data-bs-target="#modal-delete">Delete</button></div>
-                                    </div><button class="btn btn-primary" type="button" style="font-size: 12px;font-weight: bold;background: var(--bs-success);border-width: 0px;">Low</button><button class="btn btn-primary" type="button" style="font-size: 12px;font-weight: bold;background: var(--bs-form-invalid-color);border-width: 0px;">Open</button><button class="btn btn-primary" type="button" style="font-size: 12px;font-weight: bold;background: var(--bs-warning);border-width: 0px;">Medium</button><button class="btn btn-primary" type="button" style="font-size: 12px;font-weight: bold;background: var(--bs-warning);border-width: 0px;">In Progress</button><button class="btn btn-primary" type="button" style="font-size: 12px;font-weight: bold;background: var(--bs-danger);border-width: 0px;">High</button><button class="btn btn-primary" type="button" style="font-size: 12px;font-weight: bold;background: var(--bs-blue);border-width: 0px;">Resolved</button><button class="btn btn-primary" type="button" style="font-size: 12px;font-weight: bold;background: var(--bs-dark);border-width: 0px;">Closed</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -270,13 +270,38 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        @foreach ($customer->tickets as $ticket)
                                                         <tr>
-                                                            <td>Test</td>
+                                                            <td>{{ $ticket->title }}</td>
+                                                            @if ($ticket->priority === 'Low')
                                                             <td><button class="btn btn-primary" type="button" style="font-size: 12px;font-weight: bold;background: var(--bs-success);border-width: 0px;">Low</button></td>
+                                                            
+                                                            @elseif ($ticket->priority === 'Medium')
+                                                            <td><button class="btn btn-primary" type="button" style="font-size: 12px;font-weight: bold;background: var(--bs-warning);border-width: 0px;">Medium</button></td>
+
+                                                            @elseif ($ticket->priority === 'High')
+                                                            <td><button class="btn btn-primary" type="button" style="font-size: 12px;font-weight: bold;background: var(--bs-danger);border-width: 0px;">High</button></td>
+        
+                                                            @endif
+
+                                                            @if ($ticket->status === 'Open')
                                                             <td><button class="btn btn-primary" type="button" style="font-size: 12px;font-weight: bold;background: var(--bs-form-invalid-color);border-width: 0px;">Open</button></td>
-                                                            <td>5/10/2024</td>
+
+                                                            @elseif ($ticket->status === 'On progress')
+                                                            <td><button class="btn btn-primary" type="button" style="font-size: 12px;font-weight: bold;background: var(--bs-warning);border-width: 0px;">In Progress</button></td>
+
+                                                            @elseif ($ticket->status === 'Resolved')
+                                                            <td><button class="btn btn-primary" type="button" style="font-size: 12px;font-weight: bold;background: var(--bs-blue);border-width: 0px;">Resolved</button></td>
+
+                                                            @elseif ($ticket->status === 'Closed')
+                                                            <td><button class="btn btn-primary" type="button" style="font-size: 12px;font-weight: bold;background: var(--bs-dark);border-width: 0px;">Closed</button></td>
+
+                                                            @endif
+                                                            
+                                                            <td>{{ $ticket->created_at }}</td>
                                                             <td><button class="btn btn-primary btn-view-ticket" type="button" style="background: rgba(78,115,223,0);color: rgb(0,0,0);border-width: 0px;font-style: italic;">View Details</button></td>
                                                         </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
