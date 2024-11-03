@@ -127,11 +127,14 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="alert alert-success alert-dismissible" role="alert"><button class="btn-close"
-                        type="button" aria-label="Close" data-bs-dismiss="alert"></button><span><strong>Ticket
-                            status updated successfully!</strong></span></div>
-
+                @if (session()->has('alert'))
+                    @if (session('alert') === 'update')
+                        <div class="alert alert-success alert-dismissible" role="alert"><button class="btn-close"
+                                type="button" aria-label="Close"
+                                data-bs-dismiss="alert"></button><span><strong>Ticket
+                                    status updated</strong></span></div>
+                    @endif
+                @endif
                 <div class="container-fluid">
                     <div class="row mb-3">
                         <div class="col-lg-4 col-xxl-6">
@@ -176,7 +179,7 @@
                                             @elseif ($ticket->status === 'Resolved')
                                                 <button class="btn btn-primary" type="button"
                                                     style="font-size: 14px;font-weight: bold;background: var(--bs-blue);border-width: 0px;">Resolved</button>
-                                            @elseif ($ticket->status === 'CLosed')
+                                            @elseif ($ticket->status === 'Closed')
                                                 <button class="btn btn-primary" type="button"
                                                     style="font-size: 14px;font-weight: bold;background: var(--bs-dark);border-width: 0px;">Closed</button>
                                             @endif
@@ -230,15 +233,35 @@
                                                 Update Status</h6>
                                         </div>
                                         <div class="card-body">
-                                            <button class="btn btn-primary" type="button"
-                                                style="font-size: 14px;font-weight: bold;background: var(--bs-form-invalid-color);border-width: 0px;margin-right: 10px;margin-bottom: 10px;">Open</button>
-                                            <button class="btn btn-primary" type="button"
-                                                style="font-size: 14px;font-weight: bold;background: var(--bs-warning);border-width: 0px;margin-right: 10px;margin-bottom: 10px;">In
-                                                Progress</button>
-                                            <button class="btn btn-primary" type="button"
-                                                style="font-size: 14px;font-weight: bold;background: var(--bs-blue);border-width: 0px;margin-right: 10px;margin-bottom: 10px;">Resolved</button>
-                                            <button class="btn btn-primary" type="button"
-                                                style="font-size: 14px;font-weight: bold;background: var(--bs-dark);border-width: 0px;margin-bottom: 10px;margin-right: 10px;">Closed</button>
+
+                                            <form style="display: inline" action="{{ route('ticket.update', ['ticket' => $ticket->id]) }}"
+                                                method="get">
+                                                <input type="text" name="status" value="Open" hidden>
+                                                <button class="btn btn-primary" type="submit"
+                                                    style="font-size: 14px;font-weight: bold;background: var(--bs-form-invalid-color);border-width: 0px;margin-right: 10px;margin-bottom: 10px;">Open</button>
+                                            </form>
+
+                                            <form style="display: inline" action="{{ route('ticket.update', ['ticket' => $ticket->id]) }}"
+                                                method="get">
+                                                <input type="text" name="status" value="In Progress" hidden>
+                                                <button class="btn btn-primary" type="submit"
+                                                    style="font-size: 14px;font-weight: bold;background: var(--bs-warning);border-width: 0px;margin-right: 10px;margin-bottom: 10px;">In
+                                                    Progress</button>
+                                            </form>
+
+                                            <form style="display: inline" action="{{ route('ticket.update', ['ticket' => $ticket->id]) }}"
+                                                method="get">
+                                                <input type="text" name="status" value="Resolved" hidden>
+                                                <button class="btn btn-primary" type="submit"
+                                                    style="font-size: 14px;font-weight: bold;background: var(--bs-blue);border-width: 0px;margin-right: 10px;margin-bottom: 10px;">Resolved</button>
+                                            </form>
+
+                                            <form style="display: inline" action="{{ route('ticket.update', ['ticket' => $ticket->id]) }}"
+                                                method="get">
+                                                <input type="text" name="status" value="Closed" hidden>
+                                                <button class="btn btn-primary" type="submit"
+                                                    style="font-size: 14px;font-weight: bold;background: var(--bs-dark);border-width: 0px;margin-bottom: 10px;margin-right: 10px;">Closed</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

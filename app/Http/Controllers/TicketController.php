@@ -48,7 +48,15 @@ class TicketController extends Controller
         } else {
             return redirect()->route('helpdesk.helpdesk')->with('alert', 'empty');
         }
-        
+    }
 
+    public function ticket_update(Request $request,Ticket $ticket) {
+        $status = $request->input('status');
+
+        $ticket->status = $status;
+        
+        $ticket->save();
+
+        return redirect()->route('helpdesk.ticket', ['ticket' => $ticket->id])->with('alert', 'update');
     }
 }

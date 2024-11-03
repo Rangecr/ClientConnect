@@ -144,3 +144,5 @@ Route::get('/helpdesk/ticket/{ticket}', function(Ticket $ticket){
         }
 
 })->name('helpdesk.ticket');
+
+Route::get('/ticket/update/{ticket}', [TicketController::class, 'ticket_update'])->name('ticket.update');
