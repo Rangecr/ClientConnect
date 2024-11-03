@@ -335,7 +335,7 @@
                                                     </td>
                                                 @endif
 
-                                                @if ($ticket->status === 'open')
+                                                @if ($ticket->status === 'Open')
                                                     <td><button class="btn btn-primary" type="button"
                                                             style="font-size: 10px;font-weight: bold;background: var(--bs-form-invalid-color);border-width: 0px;">Open</button>
                                                     </td>
