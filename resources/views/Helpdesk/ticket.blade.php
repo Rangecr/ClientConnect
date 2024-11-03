@@ -116,15 +116,22 @@
                                 <p>Are you sure you want to delete this ticket?</p>
                             </div>
                             <div class="modal-footer"><button class="btn btn-light" type="button"
-                                    data-bs-dismiss="modal">Close</button><button class="btn btn-primary"
-                                    type="button"
-                                    style="background: var(--bs-danger);border-width: 0px;">Delete</button></div>
+                                    data-bs-dismiss="modal">Close</button>
+                                <form action="{{ route('ticket.delete') }}" method="POST">
+                                    @csrf
+                                    <input type="text" name="ids[]" value="{{ $ticket->id }}" hidden>
+                                    <button class="btn btn-primary" type="submit"
+                                        style="background: var(--bs-danger);border-width: 0px;">Delete</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
+                
                 <div class="alert alert-success alert-dismissible" role="alert"><button class="btn-close"
                         type="button" aria-label="Close" data-bs-dismiss="alert"></button><span><strong>Ticket
                             status updated successfully!</strong></span></div>
+
                 <div class="container-fluid">
                     <div class="row mb-3">
                         <div class="col-lg-4 col-xxl-6">
@@ -233,7 +240,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div><button class="btn btn-primary" type="submit"
+                            </div>
+                            <button class="btn btn-primary" type="button"
                                 style="background: var(--bs-danger);border-width: 0px;" data-bs-toggle="modal"
                                 data-bs-target="#modal-delete">Delete Ticket</button>
                         </div>

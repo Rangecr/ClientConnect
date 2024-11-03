@@ -147,8 +147,7 @@
                         <div class="alert alert-success alert-dismissible" role="alert"
                             style="color: var(--bs-danger-text-emphasis);border-color: var(--bs-danger-border-subtle);background: var(--bs-danger-bg-subtle);">
                             <button class="btn-close" type="button" aria-label="Close"
-                                data-bs-dismiss="alert"></button><span><strong>Log Deleted
-                                    Deleted!</strong></span>
+                                data-bs-dismiss="alert"></button><span><strong>Log Deleted!</strong></span>
                         </div>
                     @endif
                 @endif
