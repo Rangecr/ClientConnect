@@ -254,7 +254,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" role="dialog" tabindex="-1" id="modal-cust-log">
+                @foreach ($customer->logs as $log)
+                <div class="modal fade" role="dialog" tabindex="-1" id="modal-cust-log-{{ $log->id }}">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -267,13 +268,13 @@
                                         <p
                                             style="color: var(--bs-emphasis-color);font-weight: bold;margin-bottom: 0px;">
                                             Name</p>
-                                        <p>Izzat Saifullah</p>
+                                        <p>{{ $customer->name }}</p>
                                     </div>
                                     <div class="col">
                                         <p
                                             style="color: var(--bs-emphasis-color);font-weight: bold;margin-bottom: 0px;">
                                             Type of Interaction</p>
-                                        <p>Email</p>
+                                        <p>{{ $log->type }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -281,7 +282,7 @@
                                         <p
                                             style="color: var(--bs-emphasis-color);font-weight: bold;margin-bottom: 0px;">
                                             Date Created</p>
-                                        <p>Today, 10:45 am</p>
+                                        <p>{{ $log->created_at }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -289,7 +290,7 @@
                                         <p
                                             style="color: var(--bs-emphasis-color);font-weight: bold;margin-bottom: 0px;">
                                             Notes</p>
-                                        <p>Test</p>
+                                        <p>{{ $log->notes }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -300,6 +301,7 @@
                         </div>
                     </div>
                 </div>
+                @endforeach
                 <div class="container-fluid">
                     <h3 class="text-dark mb-4">Customer</h3>
                     <div class="row mb-3">
@@ -481,7 +483,7 @@
                                                     @if ($log->type === 'Email')
                                                         <div class="row row-mail row-email"
                                                             style="margin-bottom: 10px;" data-bs-toggle="modal"
-                                                            data-bs-target="#modal-cust-log" type="button">
+                                                            data-bs-target="#modal-cust-log-{{ $log->id }}" type="button">
                                                             <div class="col-xl-2"><svg
                                                                     xmlns="http://www.w3.org/2000/svg" width="1em"
                                                                     height="1em" viewBox="0 0 24 24" fill="none"
@@ -502,7 +504,7 @@
                                                         </div>
                                                     @elseif ($log->type === 'Call')
                                                         <div class="row row-call" style="margin-bottom: 10px;"
-                                                            data-bs-toggle="modal" data-bs-target="#modal-cust-log"
+                                                            data-bs-toggle="modal" data-bs-target="#modal-cust-log-{{ $log->id }}"
                                                             type="button">
                                                             <div class="col-xl-2"><svg
                                                                     xmlns="http://www.w3.org/2000/svg" width="1em"
@@ -533,7 +535,7 @@
                                                         </div>
                                                     @elseif ($log->type === 'Meeting')
                                                         <div class="row row-meeting" style="margin-bottom: 10px;"
-                                                            data-bs-toggle="modal" data-bs-target="#modal-cust-log"
+                                                            data-bs-toggle="modal" data-bs-target="#modal-cust-log-{{ $log->id }}"
                                                             type="button">
                                                             <div class="col-xl-2"><svg
                                                                     xmlns="http://www.w3.org/2000/svg" width="1em"
