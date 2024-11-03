@@ -119,7 +119,7 @@
                         <div class="alert alert-success alert-dismissible" role="alert"
                             style="color: var(--bs-danger-text-emphasis);border-color: var(--bs-danger-border-subtle);background: var(--bs-danger-bg-subtle);">
                             <button class="btn-close" type="button" aria-label="Close"
-                                data-bs-dismiss="alert"></button><span><strong>Selected Customer
+                                data-bs-dismiss="alert"></button><span><strong>Selected Ticket
                                     Deleted!</strong></span>
                         </div>
                     @endif
