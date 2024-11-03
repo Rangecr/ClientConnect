@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
@@ -22,6 +25,19 @@ Route::get('/register/page', function () {
 })->name('entry.register');
 
 Route::post('/register', [UserController::class, 'register'])->name('register');
+
+Route::get('/profile/{user}', function(User $user) {
+    return view('user.profile', ['user' => $user]);
+})->name('user.profile');
+
+Route::post('/logout', function(Request $request ) {
+    
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    
+    return redirect()->route('entry.login');
+})->name('user.logout');
 
 Route::get('/index/page', function () {
 
