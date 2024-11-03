@@ -127,7 +127,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="alert alert-success alert-dismissible" role="alert"><button class="btn-close"
                         type="button" aria-label="Close" data-bs-dismiss="alert"></button><span><strong>Ticket
                             status updated successfully!</strong></span></div>
@@ -229,13 +229,15 @@
                                             <h6 class="text-primary fw-bold m-0" style="color: rgb(0,0,0)!important;">
                                                 Update Status</h6>
                                         </div>
-                                        <div class="card-body"><button class="btn btn-primary" type="button"
-                                                style="font-size: 14px;font-weight: bold;background: var(--bs-form-invalid-color);border-width: 0px;margin-right: 10px;margin-bottom: 10px;">Open</button><button
-                                                class="btn btn-primary" type="button"
+                                        <div class="card-body">
+                                            <button class="btn btn-primary" type="button"
+                                                style="font-size: 14px;font-weight: bold;background: var(--bs-form-invalid-color);border-width: 0px;margin-right: 10px;margin-bottom: 10px;">Open</button>
+                                            <button class="btn btn-primary" type="button"
                                                 style="font-size: 14px;font-weight: bold;background: var(--bs-warning);border-width: 0px;margin-right: 10px;margin-bottom: 10px;">In
-                                                Progress</button><button class="btn btn-primary" type="button"
-                                                style="font-size: 14px;font-weight: bold;background: var(--bs-blue);border-width: 0px;margin-right: 10px;margin-bottom: 10px;">Resolved</button><button
-                                                class="btn btn-primary" type="button"
+                                                Progress</button>
+                                            <button class="btn btn-primary" type="button"
+                                                style="font-size: 14px;font-weight: bold;background: var(--bs-blue);border-width: 0px;margin-right: 10px;margin-bottom: 10px;">Resolved</button>
+                                            <button class="btn btn-primary" type="button"
                                                 style="font-size: 14px;font-weight: bold;background: var(--bs-dark);border-width: 0px;margin-bottom: 10px;margin-right: 10px;">Closed</button>
                                         </div>
                                     </div>
