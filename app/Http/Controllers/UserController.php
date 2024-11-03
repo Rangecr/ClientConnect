@@ -76,7 +76,9 @@ class UserController extends Controller
 
         $code = $request->input('code');
 
-        $exist = Password_reset_token::where('token', $code)->exists();
+        $exist = Password_reset_token::where('token', $code)
+        ->orderBy('created_at', 'desc')
+        ->first();
 
         $checkExpiration = Password_reset_token::where('token', $code)->first();
 

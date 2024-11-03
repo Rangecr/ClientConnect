@@ -34,7 +34,7 @@
                                 @endif
                             </div>
                             <div class="row">
-                                <div class="col"><button class="btn btn-primary d-block w-100" type="submit" style="background: rgb(237,237,237);border-color: rgb(255, 255, 255);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;color: rgb(78,115,223);">Back to log in</button></div>
+                                <div class="col"><a href="{{ route('entry.login') }}" class="btn btn-primary d-block w-100" style="background: rgb(237,237,237);border-color: rgb(255, 255, 255);border-top-color: rgb(255,;border-right-color: 255,;border-bottom-color: 255);border-left-color: 255,;color: rgb(78,115,223);">Back to log in</a></div>
                                 <div class="col"><button form="email" class="btn btn-primary d-block w-100" type="submit">Enter</button></div>
                             </div>
                         </div>
