@@ -80,7 +80,7 @@
                                     <div class="row g-0 align-items-center">
                                         <div class="col me-2">
                                             <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>TOTAL CUSTOMERS</span></div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>$40,000</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span>{{ $customers->count() }}</span></div>
                                         </div>
                                         <div class="col-auto"><i class="material-icons fa-2x text-gray-300" style="font-size: 32px;color: rgb(78,115,223)!important;">people</i></div>
                                     </div>
@@ -93,7 +93,7 @@
                                     <div class="row g-0 align-items-center">
                                         <div class="col me-2">
                                             <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>email logs</span></div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>$215,000</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span>{{ $emailCount }}</span></div>
                                         </div>
                                         <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" class="fa-2x text-gray-300" style="color: rgb(28,200,138)!important;">
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M3.00977 5.83789C3.00977 5.28561 3.45748 4.83789 4.00977 4.83789H20C20.5523 4.83789 21 5.28561 21 5.83789V17.1621C21 18.2667 20.1046 19.1621 19 19.1621H5C3.89543 19.1621 3 18.2667 3 17.1621V6.16211C3 6.11449 3.00333 6.06765 3.00977 6.0218V5.83789ZM5 8.06165V17.1621H19V8.06199L14.1215 12.9405C12.9499 14.1121 11.0504 14.1121 9.87885 12.9405L5 8.06165ZM6.57232 6.80554H17.428L12.7073 11.5263C12.3168 11.9168 11.6836 11.9168 11.2931 11.5263L6.57232 6.80554Z" fill="currentColor"></path>
@@ -110,7 +110,7 @@
                                             <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>call logs</span></div>
                                             <div class="row g-0 align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="text-dark fw-bold h5 mb-0 me-3"><span>50%</span></div>
+                                                    <div class="text-dark fw-bold h5 mb-0 me-3"><span>{{ $callCount }}</span></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -130,7 +130,7 @@
                                     <div class="row g-0 align-items-center">
                                         <div class="col me-2">
                                             <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>meeting logs</span></div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>18</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span>{{ $meetingCount }}</span></div>
                                         </div>
                                         <div class="col-auto"><i class="typcn typcn-clipboard fa-2x text-gray-300" style="color: rgb(246,194,62)!important;"></i></div>
                                     </div>
@@ -143,7 +143,7 @@
                                     <div class="row g-0 align-items-center">
                                         <div class="col me-2">
                                             <div class="text-uppercase text-success fw-bold text-xs mb-1"><span style="color: var(--bs-danger);">total open tickets</span></div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>$215,000</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span>{{ $openCount }}</span></div>
                                         </div>
                                         <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-ticket fa-2x text-gray-300" style="color: var(--bs-danger)!important;">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -162,7 +162,7 @@
                                     <div class="row g-0 align-items-center">
                                         <div class="col me-2">
                                             <div class="text-uppercase text-success fw-bold text-xs mb-1"><span style="color: var(--bs-black);">total employees</span></div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>$215,000</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span>{{ $users->count() }}</span></div>
                                         </div>
                                         <div class="col-auto"><i class="icon ion-ios-people fa-2x text-gray-300" style="color: rgb(0,0,0)!important;"></i></div>
                                     </div>

@@ -29,7 +29,28 @@ Route::get('/index/page', function () {
 
         $user = auth()->user();
 
-        return view('index.index', ['user' => $user]);
+        $users = User::all();
+        $customers = Customer::all();
+        $logs = Log::all();
+        $tickets = Ticket::all();
+
+        $emailCount = Log::where('type', 'Email')->count();
+        $callCount = Log::where('type', 'Call')->count();
+        $meetingCount = Log::where('type', 'Meeting')->count();
+
+        $openCount = Ticket::where('status', 'Open')->count();
+
+        return view('index.index', [
+            'user' => $user,
+            'users' => $users,
+            'customers' => $customers,
+            'logs' => $logs,
+            'tickets' => $tickets,
+            'emailCount' => $emailCount,
+            'callCount' => $callCount,
+            'meetingCount' => $meetingCount,
+            'openCount' => $openCount
+        ]);
     } else {
         return redirect()->route('entry.login');
     }
