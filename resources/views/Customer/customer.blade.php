@@ -142,6 +142,16 @@
                                     added successfully!</strong></span></div>
                     @endif
                 @endif
+                @if (session()->has('alert'))
+                    @if (session('alert') === 'delete')
+                        <div class="alert alert-success alert-dismissible" role="alert"
+                            style="color: var(--bs-danger-text-emphasis);border-color: var(--bs-danger-border-subtle);background: var(--bs-danger-bg-subtle);">
+                            <button class="btn-close" type="button" aria-label="Close"
+                                data-bs-dismiss="alert"></button><span><strong>Log Deleted
+                                    Deleted!</strong></span>
+                        </div>
+                    @endif
+                @endif
                 <div class="modal fade" role="dialog" tabindex="-1" id="modal-ticket">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -255,52 +265,60 @@
                     </div>
                 </div>
                 @foreach ($customer->logs as $log)
-                <div class="modal fade" role="dialog" tabindex="-1" id="modal-cust-log-{{ $log->id }}">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Log</h4><button class="btn-close" type="button"
-                                    aria-label="Close" data-bs-dismiss="modal"></button>
+                    <div class="modal fade" role="dialog" tabindex="-1" id="modal-cust-log-{{ $log->id }}">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Log</h4><button class="btn-close" type="button"
+                                        aria-label="Close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p
+                                                style="color: var(--bs-emphasis-color);font-weight: bold;margin-bottom: 0px;">
+                                                Name</p>
+                                            <p>{{ $customer->name }}</p>
+                                        </div>
+                                        <div class="col">
+                                            <p
+                                                style="color: var(--bs-emphasis-color);font-weight: bold;margin-bottom: 0px;">
+                                                Type of Interaction</p>
+                                            <p>{{ $log->type }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <p
+                                                style="color: var(--bs-emphasis-color);font-weight: bold;margin-bottom: 0px;">
+                                                Date Created</p>
+                                            <p>{{ $log->created_at }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <p
+                                                style="color: var(--bs-emphasis-color);font-weight: bold;margin-bottom: 0px;">
+                                                Notes</p>
+                                            <p>{{ $log->notes }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer"><button class="btn btn-light" type="button"
+                                        data-bs-dismiss="modal">Close</button>
+
+                                    <form action="{{ route('log.delete') }}" method="post">
+                                        @csrf
+                                        <input type="text" name="id" value="{{ $log->id }}" hidden>
+                                        <input type="text" name="page" value="customer" hidden>
+                                        <input type="text" name="cust_id" value="{{ $log->cust_id }}" hidden>
+                                        <button class="btn btn-primary" type="submit"
+                                            style="background: var(--bs-red);border-width: 0px;">Delete</button>
+                                    </form>
+                                </div>
                             </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <p
-                                            style="color: var(--bs-emphasis-color);font-weight: bold;margin-bottom: 0px;">
-                                            Name</p>
-                                        <p>{{ $customer->name }}</p>
-                                    </div>
-                                    <div class="col">
-                                        <p
-                                            style="color: var(--bs-emphasis-color);font-weight: bold;margin-bottom: 0px;">
-                                            Type of Interaction</p>
-                                        <p>{{ $log->type }}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <p
-                                            style="color: var(--bs-emphasis-color);font-weight: bold;margin-bottom: 0px;">
-                                            Date Created</p>
-                                        <p>{{ $log->created_at }}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <p
-                                            style="color: var(--bs-emphasis-color);font-weight: bold;margin-bottom: 0px;">
-                                            Notes</p>
-                                        <p>{{ $log->notes }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer"><button class="btn btn-light" type="button"
-                                    data-bs-dismiss="modal">Close</button><button class="btn btn-primary"
-                                    type="button"
-                                    style="background: var(--bs-red);border-width: 0px;">Delete</button></div>
                         </div>
                     </div>
-                </div>
                 @endforeach
                 <div class="container-fluid">
                     <h3 class="text-dark mb-4">Customer</h3>
@@ -483,7 +501,8 @@
                                                     @if ($log->type === 'Email')
                                                         <div class="row row-mail row-email"
                                                             style="margin-bottom: 10px;" data-bs-toggle="modal"
-                                                            data-bs-target="#modal-cust-log-{{ $log->id }}" type="button">
+                                                            data-bs-target="#modal-cust-log-{{ $log->id }}"
+                                                            type="button">
                                                             <div class="col-xl-2"><svg
                                                                     xmlns="http://www.w3.org/2000/svg" width="1em"
                                                                     height="1em" viewBox="0 0 24 24" fill="none"
@@ -504,7 +523,8 @@
                                                         </div>
                                                     @elseif ($log->type === 'Call')
                                                         <div class="row row-call" style="margin-bottom: 10px;"
-                                                            data-bs-toggle="modal" data-bs-target="#modal-cust-log-{{ $log->id }}"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#modal-cust-log-{{ $log->id }}"
                                                             type="button">
                                                             <div class="col-xl-2"><svg
                                                                     xmlns="http://www.w3.org/2000/svg" width="1em"
@@ -535,7 +555,8 @@
                                                         </div>
                                                     @elseif ($log->type === 'Meeting')
                                                         <div class="row row-meeting" style="margin-bottom: 10px;"
-                                                            data-bs-toggle="modal" data-bs-target="#modal-cust-log-{{ $log->id }}"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#modal-cust-log-{{ $log->id }}"
                                                             type="button">
                                                             <div class="col-xl-2"><svg
                                                                     xmlns="http://www.w3.org/2000/svg" width="1em"

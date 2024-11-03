@@ -32,4 +32,18 @@ class LogController extends Controller
         return redirect()->route('log.logs')->with('alert', 'success');
 
     }
+
+    public function log_delete(Request $request) {
+        $id = $request->input('id');
+        $page = $request->input('page');
+
+        Log::destroy($id);
+
+        if ($page === 'customer') {
+            $cust_id = $request->input('cust_id');
+            return redirect()->route('customer.customer', ['customer' => $cust_id])->with('alert', 'delete');
+        } else {
+            return redirect()->route('log.logs')->with('alert', 'delete');
+        }
+    }
 }

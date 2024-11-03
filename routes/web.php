@@ -101,6 +101,8 @@ Route::get('/log/page', function () {
 
 Route::post('/log/add' , [LogController::class, 'log_add'])->name('log.add');
 
+Route::post('/log/delete', [LogController::class, 'log_delete'])->name('log.delete');
+
 Route::post('/helpdesk/delete', [TicketController::class, 'ticket_delete'])->name('ticket.delete');
 
 Route::get('/helpdesk/page', function () {
