@@ -130,3 +130,17 @@ Route::get('/helpdesk/page', function () {
 })->name('helpdesk.helpdesk');
 
 Route::post('/ticket/add' ,[TicketController::class, 'ticket_add'])->name('ticket.add');
+
+Route::get('/helpdesk/ticket/{ticket}', function(Ticket $ticket){
+    
+    if (auth()->check()) {
+
+        $user = auth()->user();
+        
+        return view('helpdesk.ticket', ['user' => $user, 'ticket' => $ticket]);
+
+     } else {
+            return redirect()->route('entry.login');
+        }
+
+})->name('helpdesk.ticket');

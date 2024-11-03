@@ -400,7 +400,7 @@
                                                     @endif
 
                                                     <td>{{ $ticket->created_at }}</td>
-                                                    <td><a class="btn btn-primary" href="#"
+                                                    <td><a class="btn btn-primary" href="{{ route('helpdesk.ticket', ['ticket' => $ticket->id]) }}"
                                                             style="background: rgba(78,115,223,0);color: rgb(0,0,0);border-width: 0px;font-style: italic;">View
                                                             Details</a></td>
                                                 </tr>
