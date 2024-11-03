@@ -1,19 +1,20 @@
 <?php
 
+use App\Models\Log;
+use App\Models\User;
+
+use App\Models\Ticket;
+use App\Models\Customer;
 use Illuminate\Http\Request;
+use App\Models\Password_reset_token;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\LogController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TicketController;
-
-use App\Models\User;
-use App\Models\Customer;
-use App\Models\Log;
-use App\Models\Ticket;
-use App\Models\Password_reset_token;
+use App\Http\Controllers\CustomerController;
 
 Route::get('/', function () {
     Password_reset_token::where('expires_at', '<', now())->delete();
@@ -213,3 +214,8 @@ Route::get('/helpdesk/ticket/{ticket}', function(Ticket $ticket){
 })->name('helpdesk.ticket');
 
 Route::get('/ticket/update/{ticket}', [TicketController::class, 'ticket_update'])->name('ticket.update');
+
+
+
+
+Route::post('/report/customers' ,[ReportController::class, 'report_customer'])->name('report.customer');

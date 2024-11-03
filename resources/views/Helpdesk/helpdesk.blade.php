@@ -247,11 +247,13 @@
                                 role="button" style="background: var(--bs-danger);border-width: 0px;"
                                 data-bs-toggle="modal" data-bs-target="#modal-delete">Delete Selected Customer</a>
                         </div>
-                        <div class="col" style="text-align: right;"><a
+                        <div class="col" style="text-align: right;">
+                            {{-- <a
                                 class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button"
                                 style="background: rgb(0,0,0);" data-bs-toggle="modal"
                                 data-bs-target="#modal-report"><i
-                                    class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a></div>
+                                    class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a> --}}
+                                </div>
                     </div>
                     <div class="row" style="margin-bottom: 10px;">
                         <div class="col">

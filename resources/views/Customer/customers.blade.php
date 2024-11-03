@@ -93,7 +93,7 @@
                                                 d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664z">
                                             </path>
                                         </svg></a>
-                                        <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a
+                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a
                                             class="dropdown-item"
                                             href="{{ route('user.profile', ['user' => $user->id]) }}"><i
                                                 class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a>
@@ -191,18 +191,21 @@
                                     aria-label="Close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <p style="margin-bottom: 10px;">Start Date</p><input type="date">
+                                <form id="pdf" action="{{ route('report.customer') }}" method="post">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col">
+                                            <p style="margin-bottom: 10px;">Start Date</p><input name="start" type="date">
+                                        </div>
+                                        <div class="col">
+                                            <p style="margin-bottom: 10px;">End Date</p><input name="end" type="date">
+                                        </div>
                                     </div>
-                                    <div class="col">
-                                        <p style="margin-bottom: 10px;">End Date</p><input type="date">
-                                    </div>
-                                </div>
+                                </form>
                             </div>
                             <div class="modal-footer"><button class="btn btn-light" type="button"
-                                    data-bs-dismiss="modal">Close</button><button class="btn btn-primary"
-                                    type="button" style="background: rgb(183,0,0);border-width: 0px;"><svg
+                                    data-bs-dismiss="modal">Close</button><button form="pdf" class="btn btn-primary"
+                                    type="submit" style="background: rgb(183,0,0);border-width: 0px;"><svg
                                         xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
                                         fill="currentColor" viewBox="0 0 16 16" class="bi bi-file-pdf-fill"
                                         style="font-size: 20px;margin-right: 5px;">
@@ -303,7 +306,8 @@
                                             @csrf
                                             @foreach ($customers as $customer)
                                                 <tr>
-                                                    <td style="text-align: center;"><input name="ids[]" value="{{ $customer->id }}" type="checkbox"></td>
+                                                    <td style="text-align: center;"><input name="ids[]"
+                                                            value="{{ $customer->id }}" type="checkbox"></td>
                                                     <td>{{ $customer->name }}</td>
                                                     <td>{{ $customer->email }}</td>
                                                     <td>{{ $customer->p_numb }}</td>

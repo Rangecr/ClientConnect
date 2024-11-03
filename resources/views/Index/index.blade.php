@@ -114,10 +114,11 @@
                 </nav>
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                        <h3 class="text-dark mb-0">Dashboard</h3><a
+                        <h3 class="text-dark mb-0">Dashboard</h3>
+                        {{-- <a
                             class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button"
                             style="background: rgb(0,0,0);" data-bs-toggle="modal" data-bs-target="#modal-report"><i
-                                class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
+                                class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a> --}}
                     </div>
                     <div class="row" style="margin-bottom: 20px;">
                         <div class="col-md-6 col-xl-3 mb-4">
