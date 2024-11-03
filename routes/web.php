@@ -138,11 +138,14 @@ Route::get('/helpdesk/page', function () {
 
         $tickets = Ticket::with('user', 'customer')->get();
 
+        $openCount = Ticket::where('status', 'Open')->count();
+
         return view('helpdesk.helpdesk', [
             'tickets' => $tickets, 
             'customers' => $customers,
             'user' => $user,
-            'users' => $users
+            'users' => $users,
+            'openCount' => $openCount
         ]);
 
     } else {

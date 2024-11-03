@@ -258,7 +258,7 @@
                                             <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span
                                                     style="color: rgb(0,0,0);">TOtal TICKETS</span></div>
                                             <div class="text-dark fw-bold h5 mb-0"><span
-                                                    style="font-size: 30px;">$40,000</span></div>
+                                                    style="font-size: 30px;">{{ $tickets->count() }}</span></div>
                                         </div>
                                         <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg" width="1em"
                                                 height="1em" viewBox="0 0 24 24" stroke-width="2"
@@ -287,7 +287,7 @@
                                             <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span
                                                     style="color: rgb(231,74,59);">TOtal open tickets</span></div>
                                             <div class="text-dark fw-bold h5 mb-0"><span
-                                                    style="font-size: 30px;">$40,000</span></div>
+                                                    style="font-size: 30px;">{{ $openCount }}</span></div>
                                         </div>
                                         <div class="col-auto"><svg xmlns="http://www.w3.org/2000/svg" width="1em"
                                                 height="1em" viewBox="0 0 24 24" stroke-width="2"
