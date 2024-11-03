@@ -13,8 +13,10 @@ use App\Models\User;
 use App\Models\Customer;
 use App\Models\Log;
 use App\Models\Ticket;
+use App\Models\Password_reset_token;
 
 Route::get('/', function () {
+    Password_reset_token::where('expires_at', '<', now())->delete();
     return view('entry.login');
 })->name('entry.login');
 
