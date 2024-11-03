@@ -106,7 +106,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button" style="background: var(--bs-red);border-width: 0px;">Delete</button><button class="btn btn-primary" type="button" style="background: var(--bs-success);border-width: 0px;">Go to Customer's Page</button></div>
+                            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button" style="background: var(--bs-red);border-width: 0px;">Delete</button>
+                                <form action="{{ route('customer.customer', ['customer' =>$log->cust_id]) }}" method="get">
+                                    @csrf
+                                    <button class="btn btn-primary" type="submit" style="background: var(--bs-success);border-width: 0px;">Go to Customer's Page</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
