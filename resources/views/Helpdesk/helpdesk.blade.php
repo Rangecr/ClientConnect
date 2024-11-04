@@ -245,7 +245,7 @@
                                     </path>
                                 </svg>&nbsp;Add Ticket</a><a class="btn btn-primary btn-sm d-none d-sm-inline-block"
                                 role="button" style="background: var(--bs-danger);border-width: 0px;"
-                                data-bs-toggle="modal" data-bs-target="#modal-delete">Delete Selected Customer</a>
+                                data-bs-toggle="modal" data-bs-target="#modal-delete">Delete Selected Ticket</a>
                         </div>
                         <div class="col" style="text-align: right;">
                             {{-- <a

@@ -253,10 +253,14 @@
                                 style="background: rgb(0,0,0);margin-right: 10px;" data-bs-toggle="modal"
                                 data-bs-target="#modal-customer"><i
                                     class="icon ion-android-person fa-sm text-white-50"
-                                    style="font-size: 15px;"></i>&nbsp;Add Customer</a><a
-                                class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button"
-                                style="background: var(--bs-danger);border-width: 0px;" data-bs-toggle="modal"
-                                data-bs-target="#modal-delete">Delete Selected Customer</a></div>
+                                    style="font-size: 15px;"></i>&nbsp;Add Customer</a>
+                                    @can('delete')
+                                    <a
+                                    class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button"
+                                    style="background: var(--bs-danger);border-width: 0px;" data-bs-toggle="modal"
+                                    data-bs-target="#modal-delete">Delete Selected Customer</a>
+                                    @endcan
+                            </div>
                         <div class="col" style="text-align: right;"><a
                                 class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button"
                                 style="background: rgb(0,0,0);" data-bs-toggle="modal"

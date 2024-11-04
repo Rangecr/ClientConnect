@@ -36,12 +36,16 @@
             <table class="table my-0" id="dataTable">
                 <thead>
                     <tr>
-                        <th></th>
+                        @can('delete')
+                            <th></th>
+                        @endcan
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone Number</th>
                         <th>Created At</th>
-                        <th></th>
+                        @can('view')
+                            <th></th>
+                        @endcan
                     </tr>
                 </thead>
                 <tbody>
@@ -49,17 +53,22 @@
                         @csrf
                         @foreach ($customers as $customer)
                             <tr>
-                                <td style="text-align: center;"><input name="ids[]" value="{{ $customer->id }}"
-                                        type="checkbox"></td>
+                                @can('delete')
+                                    <td style="text-align: center;"><input name="ids[]" value="{{ $customer->id }}"
+                                            type="checkbox"></td>
+                                @endcan
                                 <td>{{ $customer->name }}</td>
                                 <td>{{ $customer->email }}</td>
                                 <td>{{ $customer->p_numb }}</td>
                                 <td>{{ $customer->created_at }}</td>
-                                <td style="font-style: italic;text-decoration:  underline;"><a
-                                        href="{{ route('customer.customer', ['customer' => $customer->id]) }}"
-                                        class="btn btn-primary btn-view-cust"
-                                        style="background: rgba(78,115,223,0);color: rgb(0,0,0);border-width: 0px;font-style: italic;">View
-                                        Details</a></td>
+                                @can('view')
+                                    <td style="font-style: italic;text-decoration:  underline;">
+                                        <a href="{{ route('customer.customer', ['customer' => $customer->id]) }}"
+                                            class="btn btn-primary btn-view-cust"
+                                            style="background: rgba(78,115,223,0);color: rgb(0,0,0);border-width: 0px;font-style: italic;">View
+                                            Details</a>
+                                    </td>
+                                @endcan
                             </tr>
                         @endforeach
                     </form>

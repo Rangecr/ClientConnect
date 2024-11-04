@@ -27,11 +27,6 @@ class CustomerSort extends Component
         $this->sortOption = $value;
     }
 
-    public function updatedSearchTerm()
-    {
-        // Triggers a re-render every time searchTerm is updated
-    }
-
     private function getSortedCustomers()
     {
 
