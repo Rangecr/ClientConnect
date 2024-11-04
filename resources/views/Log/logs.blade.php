@@ -293,16 +293,20 @@
                 </div>
                 <div class="container-fluid">
                     <div class="row" style="margin-bottom: 10px;">
-                        <div class="col"><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button"
-                                style="background: rgb(0,0,0);" data-bs-toggle="modal"
-                                data-bs-target="#modal-log"><svg xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="-64 0 512 512" width="1em" height="1em" fill="currentColor"
-                                    class="fa-sm text-white-50" style="font-size: 16px;">
-                                    <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
-                                    <path
-                                        d="M320 464c8.8 0 16-7.2 16-16V160H256c-17.7 0-32-14.3-32-32V48H64c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16H320zM0 64C0 28.7 28.7 0 64 0H229.5c17 0 33.3 6.7 45.3 18.7l90.5 90.5c12 12 18.7 28.3 18.7 45.3V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64z">
-                                    </path>
-                                </svg>&nbsp;Add Log</a></div>
+                        <div class="col">
+                            @can('add')
+                                <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button"
+                                    style="background: rgb(0,0,0);" data-bs-toggle="modal"
+                                    data-bs-target="#modal-log"><svg xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="-64 0 512 512" width="1em" height="1em" fill="currentColor"
+                                        class="fa-sm text-white-50" style="font-size: 16px;">
+                                        <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc. -->
+                                        <path
+                                            d="M320 464c8.8 0 16-7.2 16-16V160H256c-17.7 0-32-14.3-32-32V48H64c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16H320zM0 64C0 28.7 28.7 0 64 0H229.5c17 0 33.3 6.7 45.3 18.7l90.5 90.5c12 12 18.7 28.3 18.7 45.3V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64z">
+                                        </path>
+                                    </svg>&nbsp;Add Log</a>
+                            @endcan
+                        </div>
                         <div class="col" style="text-align: right;">
                             {{-- <a
                                 class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button"

@@ -198,17 +198,20 @@
                                     @csrf
                                     <div class="row">
                                         <div class="col">
-                                            <p style="margin-bottom: 10px;">Start Date</p><input name="start" type="date">
+                                            <p style="margin-bottom: 10px;">Start Date</p><input name="start"
+                                                type="date">
                                         </div>
                                         <div class="col">
-                                            <p style="margin-bottom: 10px;">End Date</p><input name="end" type="date">
+                                            <p style="margin-bottom: 10px;">End Date</p><input name="end"
+                                                type="date">
                                         </div>
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer"><button class="btn btn-light" type="button"
-                                    data-bs-dismiss="modal">Close</button><button form="pdf" class="btn btn-primary"
-                                    type="submit" style="background: rgb(183,0,0);border-width: 0px;"><svg
+                                    data-bs-dismiss="modal">Close</button><button form="pdf"
+                                    class="btn btn-primary" type="submit"
+                                    style="background: rgb(183,0,0);border-width: 0px;"><svg
                                         xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
                                         fill="currentColor" viewBox="0 0 16 16" class="bi bi-file-pdf-fill"
                                         style="font-size: 20px;margin-right: 5px;">
@@ -249,18 +252,20 @@
                 </div>
                 <div class="container-fluid">
                     <div class="row" style="margin-bottom: 10px;">
-                        <div class="col"><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button"
-                                style="background: rgb(0,0,0);margin-right: 10px;" data-bs-toggle="modal"
-                                data-bs-target="#modal-customer"><i
-                                    class="icon ion-android-person fa-sm text-white-50"
-                                    style="font-size: 15px;"></i>&nbsp;Add Customer</a>
-                                    @can('delete')
-                                    <a
-                                    class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button"
+                        <div class="col">
+                            @can('add')
+                                <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button"
+                                    style="background: rgb(0,0,0);margin-right: 10px;" data-bs-toggle="modal"
+                                    data-bs-target="#modal-customer"><i
+                                        class="icon ion-android-person fa-sm text-white-50"
+                                        style="font-size: 15px;"></i>&nbsp;Add Customer</a>
+                            @endcan
+                            @can('delete')
+                                <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button"
                                     style="background: var(--bs-danger);border-width: 0px;" data-bs-toggle="modal"
                                     data-bs-target="#modal-delete">Delete Selected Customer</a>
-                                    @endcan
-                            </div>
+                            @endcan
+                        </div>
                         <div class="col" style="text-align: right;"><a
                                 class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button"
                                 style="background: rgb(0,0,0);" data-bs-toggle="modal"
