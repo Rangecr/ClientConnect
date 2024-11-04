@@ -315,15 +315,20 @@
     <script>
         window.addEventListener('load', function() {
             const data = {
-                labels: ['Red', 'Blue', 'Yellow'],
+                labels: ['Open', 'In Progress', 'Resolved', 'Closed'],
                 datasets: [{
                     label: 'My First Dataset',
-                    data: [300, 50, 100, 100],
+                    data: [
+                        {!! json_encode($openCount) !!}, 
+                        {!! json_encode($inProCount) !!}, 
+                        {!! json_encode($resolvedCount) !!}, 
+                        {!! json_encode($closedCount) !!} 
+                    ],
                     backgroundColor: [
-                        'rgb(255, 99, 132)',
-                        'rgb(54, 162, 235)',
-                        'rgb(255, 205, 86)',
-                        'rgb(54, 162, 235)'
+                        '#e74a3b',
+                        '#f6c23e',
+                        '#4e73df',
+                        '#3a3b45'
                     ],
                     hoverOffset: 4
                 }]
@@ -343,15 +348,18 @@
     <script>
         window.addEventListener('load', function() {
             const data = {
-                labels: ['Red', 'Blue', 'Yellow'],
+                labels: ['Low', 'Medium', 'High'],
                 datasets: [{
                     label: 'My First Dataset',
-                    data: [300, 50, 100, 100],
+                    data: [
+                        {!! json_encode($lowCount) !!}, 
+                        {!! json_encode($mediumCount) !!}, 
+                        {!! json_encode($highCount) !!}, 
+                    ],
                     backgroundColor: [
-                        'rgb(255, 99, 132)',
-                        'rgb(54, 162, 235)',
-                        'rgb(54, 162, 235)',
-                        'rgb(255, 205, 86)'
+                        '#1cc88a',
+                        '#f6c23e',
+                        '#e74a3b'
                     ],
                     hoverOffset: 4
                 }]
@@ -395,12 +403,12 @@
                         {!! json_encode($customersCount[0]) !!},
                     ],
                     backgroundColor: [
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(54, 162, 235, 0.2)'
+                        '#4e73df',
+                        '#4e73df',
+                        '#4e73df',
+                        '#4e73df',
+                        '#4e73df',
+                        '#4e73df'
                     ],
                     borderColor: [
                         'rgb(54, 162, 235)',

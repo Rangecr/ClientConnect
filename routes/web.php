@@ -84,6 +84,13 @@ Route::get('/index/page', function () {
         $meetingCount = Log::where('type', 'Meeting')->count();
 
         $openCount = Ticket::where('status', 'Open')->count();
+        $inProCount = Ticket::where('status', 'In Progress')->count();
+        $resolvedCount = Ticket::where('status', 'Resolved')->count();
+        $closedCount = Ticket::where('status', 'Closed')->count();
+
+        $lowCount = Ticket::where('priority', 'Low')->count();
+        $mediumCount = Ticket::where('priority', 'Medium')->count();
+        $highCount = Ticket::where('priority', 'High')->count();
 
         //Bar Chart Data
         $months = [];
@@ -99,8 +106,6 @@ Route::get('/index/page', function () {
             $customersCount[] = Customer::whereMonth('created_at', $monthsNum[$i])->count();
         }
 
-        //return $customersCount;
-
         return view('index.index', [
             'user' => $user,
             'users' => $users,
@@ -110,9 +115,15 @@ Route::get('/index/page', function () {
             'emailCount' => $emailCount,
             'callCount' => $callCount,
             'meetingCount' => $meetingCount,
-            'openCount' => $openCount,
             'months' => $months,
-            'customersCount' => $customersCount
+            'customersCount' => $customersCount,
+            'openCount' => $openCount,
+            'inProCount' => $inProCount,
+            'resolvedCount' => $resolvedCount,
+            'closedCount' => $closedCount,
+            'lowCount' => $lowCount,
+            'mediumCount' => $mediumCount,
+            'highCount' => $highCount,
         ]);
     } else {
         return redirect()->route('entry.login');
