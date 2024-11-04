@@ -34,17 +34,24 @@ class UserController extends Controller
     public function register(Request $request)
     {
 
-        $user = new User();
-        $user->id = rand('10000', '99999');
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->p_numb = $request->input('p_numb');
-        $user->password = bcrypt($request->input('password'));
-        $user->role = $request->input('role');
-        $user->save();
+        $email = $request->input('email');
 
-        return view('entry.login');
+        $exist = User::where('email', $email)->exists();
 
+        if ($exist) {
+            return redirect()->route('entry.register')->with('alert', 'email');
+        } else {
+            $user = new User();
+            $user->id = rand('10000', '99999');
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            $user->p_numb = $request->input('p_numb');
+            $user->password = bcrypt($request->input('password'));
+            $user->role = $request->input('role');
+            $user->save();
+    
+            return view('entry.login');
+        }
     }
 
     public function send_reset_code(Request $request)
