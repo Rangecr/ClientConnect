@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('assets/fonts/material-icons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fonts/typicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -129,7 +130,8 @@
                                             <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>TOTAL
                                                     CUSTOMERS</span></div>
                                             <div class="text-dark fw-bold h5 mb-0">
-                                                <span>{{ $customers->count() }}</span></div>
+                                                <span>{{ $customers->count() }}</span>
+                                            </div>
                                         </div>
                                         <div class="col-auto"><i class="material-icons fa-2x text-gray-300"
                                                 style="font-size: 32px;color: rgb(78,115,223)!important;">people</i>
@@ -169,7 +171,8 @@
                                             <div class="row g-0 align-items-center">
                                                 <div class="col-auto">
                                                     <div class="text-dark fw-bold h5 mb-0 me-3">
-                                                        <span>{{ $callCount }}</span></div>
+                                                        <span>{{ $callCount }}</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -261,13 +264,10 @@
                                         Status</h6>
                                 </div>
                                 <div class="card-body">
-                                    <div class="text-center small mt-4"><span class="me-2"><i
-                                                class="fas fa-circle text-primary"></i>&nbsp;Direct</span><span
-                                            class="me-2"><i
-                                                class="fas fa-circle text-success"></i>&nbsp;Social</span><span
-                                            class="me-2"><i
-                                                class="fas fa-circle text-info"></i>&nbsp;Refferal</span></div>
+
+                                    <canvas id="ticketStatus" width="auto" height="100"></canvas>
                                 </div>
+
                             </div>
                         </div>
                         <div class="col-lg-5 col-xl-4">
@@ -277,12 +277,9 @@
                                         Priorities</h6>
                                 </div>
                                 <div class="card-body">
-                                    <div class="text-center small mt-4"><span class="me-2"><i
-                                                class="fas fa-circle text-primary"></i>&nbsp;Direct</span><span
-                                            class="me-2"><i
-                                                class="fas fa-circle text-success"></i>&nbsp;Social</span><span
-                                            class="me-2"><i
-                                                class="fas fa-circle text-info"></i>&nbsp;Refferal</span></div>
+
+                                    <canvas id="ticketPriorities" width="auto" height="220"></canvas>
+
                                 </div>
                             </div>
                         </div>
@@ -297,6 +294,9 @@
                                                 Customers Overview (Latest 6 Months)</h6>
                                         </div>
                                         <div class="card-body">
+
+                                            <canvas id="customerChart" width="auto" height="100"></canvas>
+
                                         </div>
                                     </div>
                                 </div>
@@ -312,6 +312,109 @@
             </footer>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
+    <script>
+        window.addEventListener('load', function() {
+            const data = {
+                labels: ['Red', 'Blue', 'Yellow'],
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: [300, 50, 100],
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)'
+                    ],
+                    hoverOffset: 4
+                }]
+            };
+
+            const config = {
+                type: 'doughnut',
+                data: data,
+            };
+
+            const ticketStatus = new Chart(
+                document.getElementById('ticketStatus'),
+                config
+            );
+        });
+    </script>
+    <script>
+        window.addEventListener('load', function() {
+            const data = {
+                labels: ['Red', 'Blue', 'Yellow'],
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: [300, 50, 100],
+                    backgroundColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 205, 86)'
+                    ],
+                    hoverOffset: 4
+                }]
+            };
+
+            const config = {
+                type: 'doughnut',
+                data: data,
+            };
+
+            const ticketPriorities = new Chart(
+                document.getElementById('ticketPriorities'),
+                config
+            );
+        });
+    </script>
+    <script>
+        window.addEventListener('load', function() {
+
+            const labels = ['January', 'February', 'March', 'April', 'May', 'June'];
+
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'Customer',
+                    data: [65, 59, 80, 81, 56, 55, 40],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgb(54, 162, 235)',
+                        'rgb(54, 162, 235)',
+                        'rgb(54, 162, 235)',
+                        'rgb(54, 162, 235)',
+                        'rgb(54, 162, 235)',
+                        'rgb(54, 162, 235)'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+
+            const config = {
+                type: 'bar',
+                data: data,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                },
+            };
+
+            const customerChart = new Chart(
+                document.getElementById('customerChart'),
+                config
+            );
+
+        });
+    </script>
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/chart.min.js') }}"></script>
     <script src="{{ asset('assets/js/bs-init.js') }}"></script>
