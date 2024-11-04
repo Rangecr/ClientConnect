@@ -166,12 +166,10 @@
                                             <p style="margin-bottom: 0px;">Assign To</p><select name="user_id"
                                                 class="form-select select2" required=""
                                                 style="width: 201.2px;border-radius: 5px;">
-                                                <optgroup label="Support">
                                                     @foreach ($users as $user)
                                                         <option value="{{ $user->id }}">{{ $user->name }}
                                                         </option>
                                                     @endforeach
-                                                </optgroup>
                                             </select>
                                         </div>
                                     </div>
