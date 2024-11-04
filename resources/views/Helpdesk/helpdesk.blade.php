@@ -11,9 +11,11 @@
     <link rel="stylesheet" href="{{ asset('assets/fonts/fontawesome-all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fonts/ionicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    @livewireStyles
 </head>
 
 <body id="page-top">
+    @livewireScripts
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <div id="wrapper">
         <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark"
@@ -94,7 +96,7 @@
                                                 d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664z">
                                             </path>
                                         </svg></a>
-                                        <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a
+                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a
                                             class="dropdown-item"
                                             href="{{ route('user.profile', ['user' => $user->id]) }}"><i
                                                 class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a>
@@ -166,10 +168,10 @@
                                             <p style="margin-bottom: 0px;">Assign To</p><select name="user_id"
                                                 class="form-select select2" required=""
                                                 style="width: 201.2px;border-radius: 5px;">
-                                                    @foreach ($users as $user)
-                                                        <option value="{{ $user->id }}">{{ $user->name }}
-                                                        </option>
-                                                    @endforeach
+                                                @foreach ($users as $user)
+                                                    <option value="{{ $user->id }}">{{ $user->name }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -251,7 +253,7 @@
                                 style="background: rgb(0,0,0);" data-bs-toggle="modal"
                                 data-bs-target="#modal-report"><i
                                     class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a> --}}
-                                </div>
+                        </div>
                     </div>
                     <div class="row" style="margin-bottom: 10px;">
                         <div class="col">
@@ -313,7 +315,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card shadow">
+                    @livewire('ticket-sort')
+                    {{-- <div class="card shadow">
                         <div class="card-header py-3">
                             <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0)!important;">Tickets Info</p>
                             <p style="margin-bottom: 0px;">Filtered by: Something</p>
@@ -324,18 +327,17 @@
                                     <div class="dropdown"><button class="btn btn-primary dropdown-toggle"
                                             aria-expanded="false" data-bs-toggle="dropdown" type="button"
                                             style="background: rgb(0,0,0);">Filter By</button>
-                                        <div class="dropdown-menu"><a class="dropdown-item" href="#">Date
-                                                (Latest to Oldest)</a><a class="dropdown-item" href="#">Date
-                                                (Oldest to Latest)</a><a class="dropdown-item" href="#">Name |
-                                                Alphabetically (A to Z)</a><a class="dropdown-item"
-                                                href="#"><span
-                                                    style="color: var(--bs-dropdown-link-hover-color); background-color: var(--bs-dropdown-link-hover-bg);">Name
-                                                    | Alphabetically (Z to A)</span></a><a class="dropdown-item"
-                                                href="#">Priority (Low to High)</a><a class="dropdown-item"
-                                                href="#"><span
-                                                    style="color: var(--bs-dropdown-link-hover-color); background-color: var(--bs-dropdown-link-hover-bg);">Priority
-                                                    (High to Low)</span></a><a class="dropdown-item"
-                                                href="#">Assigned to You</a></div>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="#">Date
+                                                (Latest to Oldest)</a>
+                                            <a class="dropdown-item" href="#">Date
+                                                (Oldest to Latest)</a>
+                                            <a class="dropdown-item" href="#">Title |
+                                                Alphabetically (A to Z)</a>
+                                            <a class="dropdown-item" href="#"><span
+                                                    style="color: var(--bs-dropdown-link-hover-color); background-color: var(--bs-dropdown-link-hover-bg);">Title
+                                                    | Alphabetically (Z to A)</span></a>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -405,7 +407,8 @@
                                                     @endif
 
                                                     <td>{{ $ticket->created_at }}</td>
-                                                    <td><a class="btn btn-primary" href="{{ route('helpdesk.ticket', ['ticket' => $ticket->id]) }}"
+                                                    <td><a class="btn btn-primary"
+                                                            href="{{ route('helpdesk.ticket', ['ticket' => $ticket->id]) }}"
                                                             style="background: rgba(78,115,223,0);color: rgb(0,0,0);border-width: 0px;font-style: italic;">View
                                                             Details</a></td>
                                                 </tr>
@@ -418,7 +421,7 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="modal fade" role="dialog" tabindex="-1" id="modal-report">
                     <div class="modal-dialog" role="document">
