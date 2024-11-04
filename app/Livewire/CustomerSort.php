@@ -8,17 +8,18 @@ use App\Models\Customer;
 class CustomerSort extends Component
 {
 
-    public $sortOption = 'Date (Latest to Oldest)'; // Default sorting option
+    public $sortOption = 'Date (Latest to Oldest)';
+
+    public $searchTerm = '';
 
     protected $queryString = ['sortOption'];
 
     public function render()
     {
+        //dd($this->searchTerm);
         $customers = $this->getSortedCustomers();
 
-        return view('livewire.customer-sort', [
-            'customers' => $customers,
-        ]);
+        return view('livewire.customer-sort', compact('customers'));
     }
 
     public function setSortOption($value)
@@ -26,19 +27,35 @@ class CustomerSort extends Component
         $this->sortOption = $value;
     }
 
+    public function updatedSearchTerm()
+    {
+        // Triggers a re-render every time searchTerm is updated
+    }
+
     private function getSortedCustomers()
     {
+
+        $query = Customer::query();
+
+        if (!empty($this->searchTerm)) {
+            $query->where('name', 'like', '%' . $this->searchTerm . '%');
+        }
+
         switch ($this->sortOption) {
             case 'Date (Latest to Oldest)':
-                return Customer::orderBy('created_at', 'desc')->get();
+                $query->orderBy('created_at', 'desc');
+                break;
             case 'Date (Oldest to Latest)':
-                return Customer::orderBy('created_at', 'asc')->get();
+                $query->orderBy('created_at', 'asc');
+                break;
             case 'Name | Alphabetically (A to Z)':
-                return Customer::orderBy('name', 'asc')->get();
+                $query->orderBy('name', 'asc');
+                break;
             case 'Name | Alphabetically (Z to A)':
-                return Customer::orderBy('name', 'desc')->get();
-            default:
-                return Customer::all();
+                $query->orderBy('name', 'desc');
+                break;
         }
+
+        return $query->get();
     }
 }

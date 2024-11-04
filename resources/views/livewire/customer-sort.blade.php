@@ -10,20 +10,29 @@
                 <div class="dropdown"><button class="btn btn-primary dropdown-toggle" aria-expanded="false"
                         data-bs-toggle="dropdown" type="button" style="background: rgb(0,0,0);">Filter By</button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#" wire:click="setSortOption('Date (Latest to Oldest)')">Date (Latest to Oldest)</a>
-                        <a class="dropdown-item" href="#" wire:click="setSortOption('Date (Oldest to Latest)')">Date (Oldest to Latest)</a>
-                        <a class="dropdown-item" href="#" wire:click="setSortOption('Name | Alphabetically (A to Z)')">Name | Alphabetically (A to Z)</a>
-                        <a class="dropdown-item" href="#" wire:click="setSortOption('Name | Alphabetically (Z to A)')">Name | Alphabetically (Z to A)</a>
+                        <a class="dropdown-item" href="#"
+                            wire:click="setSortOption('Date (Latest to Oldest)')">Date (Latest to Oldest)</a>
+                        <a class="dropdown-item" href="#"
+                            wire:click="setSortOption('Date (Oldest to Latest)')">Date (Oldest to Latest)</a>
+                        <a class="dropdown-item" href="#"
+                            wire:click="setSortOption('Name | Alphabetically (A to Z)')">Name | Alphabetically (A to
+                            Z)</a>
+                        <a class="dropdown-item" href="#"
+                            wire:click="setSortOption('Name | Alphabetically (Z to A)')">Name | Alphabetically (Z to
+                            A)</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input
-                            type="search" class="form-control form-control-sm" aria-controls="dataTable"
-                            placeholder="Search"></label></div>
+                <div class="text-md-end">
+                    <label class="form-label">
+                        <input type="text" wire:model.lazy="searchTerm" class="form-control form-control-sm"
+                            placeholder="Search">
+                    </label>
+                </div>
             </div>
         </div>
-        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+        <div class="table-responsive table mt-2" role="grid"">
             <table class="table my-0" id="dataTable">
                 <thead>
                     <tr>
