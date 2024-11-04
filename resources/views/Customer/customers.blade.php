@@ -11,9 +11,12 @@
     <link rel="stylesheet" href="{{ asset('assets/fonts/fontawesome-all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fonts/ionicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+
+    @livewireStyles
 </head>
 
 <body id="page-top">
+    @livewireScripts
     <div id="wrapper">
         <nav class="navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark"
             style="background: rgb(0,0,0);">
@@ -260,7 +263,8 @@
                                 data-bs-target="#modal-report"><i
                                     class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a></div>
                     </div>
-                    <div class="card shadow">
+                    @livewire('customer-sort')
+                    {{-- <div class="card shadow">
                         <div class="card-header py-3">
                             <p class="text-primary m-0 fw-bold" style="color: rgb(0,0,0)!important;">Customers Info
                             </p>
@@ -327,7 +331,7 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <footer class="bg-white sticky-footer">
