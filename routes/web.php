@@ -6,9 +6,10 @@ use App\Models\User;
 use App\Models\Ticket;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Models\Password_reset_token;
-use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\UserController;
@@ -84,6 +85,22 @@ Route::get('/index/page', function () {
 
         $openCount = Ticket::where('status', 'Open')->count();
 
+        //Bar Chart Data
+        $months = [];
+        $monthsNum = [];
+        $customersCount = [];
+
+        for ($i = 0; $i <= 5; $i++) {
+            $months[] = Carbon::now()->subMonths($i)->format('F');
+            $monthsNum[] = Carbon::now()->subMonths($i);
+        }
+
+        for ($i = 0; $i <= 5; $i++) {
+            $customersCount[] = Customer::whereMonth('created_at', $monthsNum[$i])->count();
+        }
+
+        //return $customersCount;
+
         return view('index.index', [
             'user' => $user,
             'users' => $users,
@@ -93,7 +110,9 @@ Route::get('/index/page', function () {
             'emailCount' => $emailCount,
             'callCount' => $callCount,
             'meetingCount' => $meetingCount,
-            'openCount' => $openCount
+            'openCount' => $openCount,
+            'months' => $months,
+            'customersCount' => $customersCount
         ]);
     } else {
         return redirect()->route('entry.login');

@@ -318,11 +318,12 @@
                 labels: ['Red', 'Blue', 'Yellow'],
                 datasets: [{
                     label: 'My First Dataset',
-                    data: [300, 50, 100],
+                    data: [300, 50, 100, 100],
                     backgroundColor: [
                         'rgb(255, 99, 132)',
                         'rgb(54, 162, 235)',
-                        'rgb(255, 205, 86)'
+                        'rgb(255, 205, 86)',
+                        'rgb(54, 162, 235)'
                     ],
                     hoverOffset: 4
                 }]
@@ -345,9 +346,10 @@
                 labels: ['Red', 'Blue', 'Yellow'],
                 datasets: [{
                     label: 'My First Dataset',
-                    data: [300, 50, 100],
+                    data: [300, 50, 100, 100],
                     backgroundColor: [
                         'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
                         'rgb(54, 162, 235)',
                         'rgb(255, 205, 86)'
                     ],
@@ -369,13 +371,29 @@
     <script>
         window.addEventListener('load', function() {
 
-            const labels = ['January', 'February', 'March', 'April', 'May', 'June'];
+            // const labels = ['January', 'February', 'March', 'April', 'May', 'June'];
+
+            const labels = [
+                {!! json_encode($months[5]) !!},
+                {!! json_encode($months[4]) !!},
+                {!! json_encode($months[3]) !!},
+                {!! json_encode($months[2]) !!},
+                {!! json_encode($months[1]) !!},
+                {!! json_encode($months[0]) !!}
+            ];
 
             const data = {
                 labels: labels,
                 datasets: [{
                     label: 'Customer',
-                    data: [65, 59, 80, 81, 56, 55, 40],
+                    data: [
+                        {!! json_encode($customersCount[5]) !!},
+                        {!! json_encode($customersCount[4]) !!},
+                        {!! json_encode($customersCount[3]) !!},
+                        {!! json_encode($customersCount[2]) !!},
+                        {!! json_encode($customersCount[1]) !!},
+                        {!! json_encode($customersCount[0]) !!},
+                    ],
                     backgroundColor: [
                         'rgba(54, 162, 235, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
