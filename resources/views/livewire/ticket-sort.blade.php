@@ -23,7 +23,7 @@
             </div>
             <div class="col-md-6">
                 <div class="text-md-end dataTables_filter" id="dataTable_filter"><label
-                        class="form-label"><input wire:model.lazy="searchTerm" type="search"
+                        class="form-label"><input wire:model.live="searchTerm" type="search"
                             class="form-control form-control-sm" aria-controls="dataTable"
                             placeholder="Search"></label></div>
             </div>

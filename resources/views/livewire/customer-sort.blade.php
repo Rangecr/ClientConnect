@@ -26,7 +26,7 @@
             <div class="col-md-6">
                 <div class="text-md-end">
                     <label class="form-label">
-                        <input type="text" wire:model.lazy="searchTerm" class="form-control form-control-sm"
+                        <input type="text" wire:model.live="searchTerm" class="form-control form-control-sm"
                             placeholder="Search">
                     </label>
                 </div>
